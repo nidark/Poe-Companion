@@ -42,8 +42,8 @@ Flask=1
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ;Scroll stash tabs using mouse-wheel
-WheelDown::Send {Right} ; works no matter the resolution or any item positioning
-WheelUp::Send {Left} ; works no matter the resolution or any item positioning
+!WheelDown::Send {Right} ; works no matter the resolution or any item positioning
+!WheelUp::Send {Left} ; works no matter the resolution or any item positioning
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
