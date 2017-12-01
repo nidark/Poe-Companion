@@ -46,7 +46,7 @@ This can't be identified as we randomize all timmings, but dont use it if you wa
 .....................................................................................................................................
 
 
-**\`\** Pressing \`\ once will press 1,2,3,4,5 in fast seqvence 
+**\`** Pressing \` once will press 1,2,3,4,5 in fast seqvence 
 
 **ALT+Space** Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
 
