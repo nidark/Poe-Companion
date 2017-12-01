@@ -42,7 +42,7 @@ ALT+S  Pressing it for 5 times will press 1,2,3,4,4 in fast seqvence
 The next macros are NOT ALLOWED by GGG (EULA), as we send multiple server actions with one button pressed
 This can't be identified as we randomize all timmings, but dont use it if you want to stick with the EULA 
 
-'\`' Pressing '`' once will press 1,2,3,4,5 in fast seqvence 
+\` Pressing ` once will press 1,2,3,4,5 in fast seqvence 
 
 ALT+Space Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
 
