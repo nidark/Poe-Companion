@@ -14,7 +14,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **[**  Exit the current macro loop/function
 
-**Mouse-Wheel Scroll** Navigate through stash tabs
+**ALT + Mouse-Wheel Scroll** Navigate through stash tabs
 
 **ALT+G** /global 820
 
