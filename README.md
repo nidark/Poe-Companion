@@ -11,13 +11,21 @@ For different setups (resolution and/or scroll positions in inventory) you need 
 FUNCTIONS:
 
 MouseWheel Scroll stash tabs
+
 ALT+G /global 820
+
 ALT+T /trade 820 
+
 ALT+H /hideout 
+
 ALT+R /remaining
+
 ALT+B /abandon_daily
+
 ALT+L /itemlevel
+
 ALT+P /passives
+
 ALT+E /exit
 
 ALT+Y: Invite the last char who whispered you to party
