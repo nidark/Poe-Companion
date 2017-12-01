@@ -45,7 +45,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 The next macros are NOT ALLOWED by GGG (EULA), as we send multiple server actions with one button pressed
 
-This can't be identified as we randomize all timmings, but dont use it if you want to stick with the EULA 
+This can't be identified as we randomize all timmings, but dont use it if you want to stick to the EULA 
 
 ..................................................................................................................................................................................................................................................
 
