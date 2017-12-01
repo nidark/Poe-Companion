@@ -12,7 +12,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **ALT+F1** Exit the script
 
-**[** Exit the current macro loop/function
+**[**  Exit the current macro loop/function
 
 **Mouse-Wheel Scroll** Navigate through stash tabs
 
