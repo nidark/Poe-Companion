@@ -39,8 +39,10 @@ ALT+O  Get the cursor position. Use it to change the position setup for Identify
 ALT+S  Pressing it for 5 times will press 1,2,3,4,4 in fast seqvence
 
 ..........................................................................................................
+
 The next macros are NOT ALLOWED by GGG (EULA), as we send multiple server actions with one button pressed
 This can't be identified as we randomize all timmings, but dont use it if you want to stick with the EULA 
+
 ..........................................................................................................
 
 
