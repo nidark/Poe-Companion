@@ -8,35 +8,35 @@ Most probably you will need to adjust the positions as this is mostly character 
 
 For different setups (resolution and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in each of the respective functions.
 
-FUNCTIONS:
+**FUNCTIONS:**
 
-MouseWheel Scroll stash tabs
+**Mouse-Wheel Scroll** stash tabs
 
-ALT+G /global 820
+**ALT+G** /global 820
 
-ALT+T /trade 820 
+**ALT+T** /trade 820 
 
-ALT+H /hideout 
+**ALT+H** /hideout 
 
-ALT+R /remaining
+**ALT+R** /remaining
 
-ALT+B /abandon_daily
+**ALT+B** /abandon_daily
 
-ALT+L /itemlevel
+**ALT+L** /itemlevel
 
-ALT+P /passives
+**ALT+P** /passives
 
-ALT+E /exit
+**ALT+E** /exit
 
-ALT+Y: Invite the last char who whispered you to party
+**ALT+Y** Invite the last char who whispered you to party
 
-ALT+F1 Exit the script
+**ALT+F1** Exit the script
 
-ALT+Q  Fast logout
+**ALT+Q**  Fast logout
 
-ALT+O  Get the cursor position. Use it to change the position setup for Identify, OpenPortal, SwitchGem etc
+**ALT+O**  Get the cursor position. Use it to change the position setup for Identify, OpenPortal, SwitchGem etc
 
-ALT+S  Pressing it for 5 times will press 1,2,3,4,4 in fast seqvence
+**ALT+S**  Pressing it for 5 times will press 1,2,3,4,4 in fast seqvence
 
 ..........................................................................................................
 
@@ -46,9 +46,9 @@ This can't be identified as we randomize all timmings, but dont use it if you wa
 ..........................................................................................................
 
 
-\` Pressing ` once will press 1,2,3,4,5 in fast seqvence 
+**\`** Pressing ` once will press 1,2,3,4,5 in fast seqvence 
 
-ALT+Space Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
+**ALT+Space** Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
 
 ALT+I ID all items in Inventory; Use CheckPos to change wisdom scroll position if needed
 
