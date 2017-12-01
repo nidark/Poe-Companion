@@ -10,7 +10,11 @@ For different setups (resolution and/or scroll positions in inventory) you need 
 
 **FUNCTIONS:**
 
-**Mouse-Wheel Scroll** stash tabs
+**ALT+F1** Exit the script
+
+**[** Exit the current macro loop/function
+
+**Mouse-Wheel Scroll** Navigate through stash tabs
 
 **ALT+G** /global 820
 
@@ -29,8 +33,6 @@ For different setups (resolution and/or scroll positions in inventory) you need 
 **ALT+E** /exit
 
 **ALT+Y** Invite the last char who whispered you to party
-
-**ALT+F1** Exit the script
 
 **ALT+Q**  Fast logout
 
