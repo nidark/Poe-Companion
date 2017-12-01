@@ -1,12 +1,12 @@
 # Poe Utils
-Path Of Exile AHK Util Macros
+**Path Of Exile - AHK - Util Macros**
 
 All the functions will work without any changes for Windowed FullScreen 1920x1080, if you keep the wisdom & portal scrolls respectively on the last 2 positions of the first row. 
 
-The SwichGem function will work only if you have the same setup like me (see details in the function). 
+The SwichGems function will work only if you have the same setup like me (see details in the function). 
 Most probably you will need to adjust the positions as this is mostly character based.
 
-For different setups (resolution and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in each of the respective functions.
+For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in each of the respective functions.
 
 **FUNCTIONS:**
 
