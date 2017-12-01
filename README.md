@@ -1,7 +1,7 @@
 # Poe Utils
 Path Of Exile AHK Util Macros
 
-All the functions will work without any changes for Windowed FullScreen 1920x1080, having wisdom & portal scrolls respectively on the last 2 positions of the first row. 
+All the functions will work without any changes for Windowed FullScreen 1920x1080, if you keep the wisdom & portal scrolls respectively on the last 2 positions of the first row. 
 
 The SwichGem function will work only if you have the same setup like me (see details in the function). 
 Most probably you will need to adjust the positions as this is mostly character based.
@@ -48,7 +48,7 @@ This can't be identified as we randomize all timmings, but dont use it if you wa
 
 **\`** Pressing \` once will press 1,2,3,4,5 in fast seqvence 
 
-**ALT+Space** Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
+**ALT+Space** Open a portal using a portal scroll from the top right inv slot; Use CheckPos to change portal scroll position if needed
 
 **ALT+I** ID all items in Inventory; Use CheckPos to change wisdom scroll position if needed
 
