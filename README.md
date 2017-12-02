@@ -38,7 +38,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **ALT+O**  Get the cursor position. Use it to change the position setup for Identify, OpenPortal, SwitchGem etc
 
-**ALT+S**  Pressing it for 5 times will press 1,2,3,4,4 in fast seqvence
+**ALT+S**  Pressing it for 5 times will press 1,2,3,4,5 in fast seqvence
 
 ..................................................................................................................................................................................................................................................
 
