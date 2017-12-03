@@ -12,7 +12,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **ALT+F1** Exit the script
 
-**[**  Exit the current macro loop/function
+**[**  Keep [ pressed to exit the current macro loop/function (usefull to exit a CTRL-Click or similar loop when you dont have a full inv)
 
 **ALT + Mouse-Wheel Scroll** Navigate through stash tabs
 
