@@ -55,7 +55,7 @@ This can't be identified as we randomize all timmings, but dont use it if you wa
 
 **ALT+I** ID all items in Inventory; Use CheckPos to change wisdom scroll position if needed
 
-**ALT+C** Ctrl-Click full inventory (move all to stash), excepting the last 2 columnns; Use CheckPos to change position if needed
+**ALT+C** Ctrl-Click full inventory (move all to stash or sell all to vendor), excepting the last 2 columnns; Use CheckPos to change position if needed
 
 **ALT+F** Shift-Click 50 times (Use it for Fusings/Jewler 6s/6l crafting)
 
