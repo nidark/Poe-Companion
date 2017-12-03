@@ -77,7 +77,6 @@ Flask=1
 !V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 ; Functions----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 RandomSleep(min,max){
 	Random, r, %min%, %max%
@@ -85,7 +84,7 @@ RandomSleep(min,max){
 }
 DivTrade() {
 	BlockInput On
-	
+	RandomSleep(111,133)
 	; Get Pos of top left inventory cell
 	ix := 1297
 	iy := 616
@@ -97,30 +96,41 @@ DivTrade() {
 	; Get pos of the resulted item
 	ixTradedItem := 646
 	iyTradedItem := 565	
-	
-	Send {CtrlDown} 
-	RandomSleep(51,63)
-	
+		
 	x := ix
 	y := iy
 	delta := 53
+
+	;Send {CtrlDown} 
+	;RandomSleep(111,133)	
 	
 	Loop 10 { ;not 12 as we dont ctrl-move the last 2 columns (we keep there the scrols and other permanent inv stuff)
 		Loop 5 { 
 			if GetKeyState("[") = 1 
 				break
-			Click, %x%, %y%
-			RandomSleep(51,63)
-			Click, %ixTrade%, %iyTrade%
-			RandomSleep(51,63)
-			Click, %ixTradedItem%, %iyTradedItem%
-			RandomSleep(51,63)
+			
+			MouseMove , %x%, %y%
+			RandomSleep(111,133)
+			send ^{Click}
+			RandomSleep(111,133)
+			
+			Mousemove, %ixTrade%, %iyTrade%
+			RandomSleep(111,133)
+			send ^{Click}
+			RandomSleep(111,133)
+			
+			MouseMove, %ixTradedItem%, %iyTradedItem%
+			RandomSleep(111,133)
+			send ^{Click}
+			RandomSleep(111,133)
+			
 			y += delta			
 		}
 		y := iy
 		x += delta
 	}
-	Send {CTRLUp} 
+	;Send {CtrlUp} 
+	BlockInput Off
 }
 SwitchGEM() {
 	BlockInput On
@@ -135,25 +145,25 @@ SwitchGEM() {
 	iySecondGem := 372
 	
 	Send {F2} 
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Send {i} 
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Click, Right, %ixFirstGem%, %iyFirstGem%
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Click,  %ixSecondGem%, %iySecondGem%
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Click,  %ixFirstGem%, %iyFirstGem%
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Send {i} 
 	BlockInput Off
@@ -175,7 +185,7 @@ POT12345() {
 }
 CtrlClick(){
 	BlockInput On
-	RandomSleep(151,163)
+	RandomSleep(111,133)
 	
 	; Get Pos of top left inventory cell
 	ix := 1297
@@ -186,40 +196,47 @@ CtrlClick(){
 	y := iy
 		
 	Send {CtrlDown} 
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Loop 10 { ;we dont ctrl-move the last 2 columns (we keep there the scrols and other permanent inv stuff)
 		Loop 5 { 
 			if GetKeyState("[") = 1 
 				break
-			Click, %x%, %y%
-			y += delta
-			RandomSleep(51,63)
+			
+			Mousemove ,%x%, %y%
+			RandomSleep(111,133)
+			Click
+			RandomSleep(111,133)
+			
+			y += delta			
 		}
 		y := iy
 		x += delta
 	}
-	Send {CTRLUp}		
+	
+	Send {CtrlUp}		
 	BlockInput Off
  }
 ShiftClick() {    
+	BlockInput On
 	RandomSleep(151,163)
 	
 	Send {ShiftDown} 
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Loop 50 { ; change 50 to how many shift-clicks you want to perform in a series
 		if GetKeyState("[") = 1 
 				break
 		Click
-		RandomSleep(51,63)
+		RandomSleep(111,133)
 		}
 	
 	Send {ShiftUp} 
+	BlockInput Off
 }
 Identify() {
 	BlockInput On
-	RandomSleep(151,163)
+	RandomSleep(111,133)
 	
 	; Get Pos of top left inventory cell
 	ix := 1297
@@ -229,18 +246,25 @@ Identify() {
 	x := ix
 	y := iy
 		
-	Click Right, 1820, 615 ; Get pos of the wisdom scrolls (default is the 11th from the first row on specified resolution) 
-	RandomSleep(51,63)
+	MouseMove, 1820, 615 ; Get pos of the wisdom scrolls (default is the 11th from the first row on specified resolution) 
+	RandomSleep(111,133)
+	Click Right 
+	RandomSleep(111,133)
 	Send {ShiftDown} 
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	
 	Loop 12 {
 		Loop 5 {
 			if GetKeyState("[") = 1 
 				break
-			Click, %x%, %y%
+			
+			MouseMove, %x%, %y%
+			RandomSleep(111,133)
+			Click
+			RandomSleep(111,133)
+			
 			y += delta
-			RandomSleep(51,63)
+			
 		}
 		y := iy
 		x += delta
@@ -251,13 +275,15 @@ Identify() {
 }
 OpenPortal(){
 	BlockInput On
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	MouseGetPos xx, yy
 	Send {i}
+	
 	MouseMove, 1859, 616, 0 
-	RandomSleep(51,63)
+	RandomSleep(111,133)
 	Click Right
-	RandomSleep(51,63)
+	RandomSleep(111,133)
+	
 	Send {i}
 	MouseMove, xx, yy, 0
 	BlockInput Off
