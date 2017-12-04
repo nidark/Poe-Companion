@@ -70,7 +70,7 @@ Flask=1
 `::POT12345() ; `: Pressing ` once will press 1,2,3,4,5 in fast seqvence 
 !I::Identify(1297,616,5,10) ; ALT+I: Id all the items from Inventory 
 +I::Identify(41,188,12,12) ; SHIFT:I: Id all Items from the opened stash tab
-!C::CtrlClick(1297,616,5,10) ; ALT+C: CtrlClick full inventory excepting the last 2 columnns
+!C::CtrlClick(1297,616,5,10) ; ALT+C: CtrlClick full inventory excepting the last 2 columns
 +C::CtrlClick(41,188,12,4) ; SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
 !X::CtrlClick(-1,-1,12,4) ; ALT+X: CtrClick the opened tab from the MousePointer (needs to be a top cell)
 !F::ShiftClick() ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) 
@@ -189,10 +189,7 @@ POT12345() {
 CtrlClick(iX,iY,iRow,IColumn){
 	BlockInput On
 	RandomSleep(113,138)
-	
 	; iX, iY -> Get Pos of top left inventory cell
-	;ix := 1297
-	;iy := 616
 	if iX = -1 
 		MouseGetPos iX,iY
 	
@@ -206,9 +203,9 @@ CtrlClick(iX,iY,iRow,IColumn){
 				break
 			
 			Mousemove ,%x%, %y%
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			send ^{Click}
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			
 			y += delta			
 		}
@@ -239,11 +236,8 @@ ShiftClick() {
 Identify(iX,iY,iRow,IColumn) {
 	BlockInput On
 	RandomSleep(113,138)
-	
-	; Get Pos of top left inventory cell
-	;ix := 1297
-	;iy := 616
-	
+	; iX, iY pos of top left inventory cell
+		
 	delta := 53
 	x := ix
 	y := iy
