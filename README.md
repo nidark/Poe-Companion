@@ -23,13 +23,15 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **ALT+C** Ctrl-Click full inventory (move all to stash or sell all to vendor), excepting the last 2 columnns
 
-**SHIFT+C** SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
+**SHIFT+C** Ctrl-Click the opened stash tab to move 12 X 4 (rows x columns) to the Inventory
+
+**ALT+V** Trade all your divinations
 
 **ALT+F** Shift-Click 50 times (Use it for Fusings/Jewler 6s/6l crafting)
 
 **ALT+M** Switch 2 gems (ex: conc effect with area). Use CheckPos to change the gem positions in the function! 
 
-**ALT+V** Trade all your divinations
+
 
 ..................................................................................................................................................................................................................................................
 
