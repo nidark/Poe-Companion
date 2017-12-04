@@ -245,9 +245,10 @@ Identify(iX,iY,iRow,IColumn) {
 	y := iy
 		
 	MouseMove, 1820, 615 ; Get pos of the wisdom scrolls (default is the 11th from the first row on specified resolution) 
-	RandomSleep(113,138)
+	RandomSleep(56,68)
 	Click Right 
-	RandomSleep(113,138)
+	RandomSleep(56,68)
+	
 	Send {ShiftDown} 
 	RandomSleep(113,138)
 	
@@ -277,7 +278,7 @@ OpenPortal(){
 	RandomSleep(113,138)
 	MouseGetPos xx, yy
 	Send {i}
-	RandomSleep(56,68
+	RandomSleep(56,68)
 	MouseMove, 1859, 616, 0 ; portal scroll location, top right
 	RandomSleep(56,68)
 	Click Right
