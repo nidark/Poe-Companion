@@ -23,8 +23,6 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
                 MsgBox, Error ED04 : There was a problem downloading readme.txt
 }
 
-
-
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; All the functions will work without any changes for windowed full-screen 1920x1080, having wisdom & portal scrolls respectively on the last 2 positions of the first row. 
 ; The SwichGem function will work only if you have the same setup like me (see details in the function). 
@@ -39,40 +37,41 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
 
 Flask=1
 
-
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ;Scroll stash tabs using mouse-wheel
-!WheelDown::Send {Right} ; works no matter the resolution or any item positioning
-!WheelUp::Send {Left} ; works no matter the resolution or any item positioning
+!WheelDown::Send {Right} ; ALT+WheelDown: Stash scroll 
+!WheelUp::Send {Left} ; ALT+WheelUp: Stash scroll 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-!G::Send {Enter} /global 820 {Enter} ; works no matter the resolution or any item positioning
-!T::Send {Enter} /trade 820 {Enter} ; works no matter the resolution or any item positioning
-!H::Send {Enter} /hideout {Enter} ; works no matter the resolution or any item positioning
-!R::Send {Enter} /remaining {Enter} ; works no matter the resolution or any item positioning
-!B::Send {Enter} /abandon_daily {Enter} ; works no matter the resolution or any item positioning
-!L::Send {Enter} /itemlevel {Enter} ; works no matter the resolution or any item positioning
-!P::Send {Enter} /passives {Enter} ; works no matter the resolution or any item positioning
-!E::Send {Enter} /exit {Enter} ; works no matter the resolution or any item positioning
-!Y::Send ^{Enter}{Home}{Delete}/invite {Enter} ; Invite the last char who whispered you to party; works no matter the resolution or any item positioning
+!G::Send {Enter} /global 820 {Enter} ; ALT+G
+!T::Send {Enter} /trade 820 {Enter} ; ALT+T
+!H::Send {Enter} /hideout {Enter} ; ALT+H
+!R::Send {Enter} /remaining {Enter} ; ALT+R
+!B::Send {Enter} /abandon_daily {Enter} ; ALT+B
+!L::Send {Enter} /itemlevel {Enter} ; ALT+L
+!P::Send {Enter} /passives {Enter} ; ALT+P
+!E::Send {Enter} /exit {Enter} ; ALT+E: Exit to char selection
+!Y::Send ^{Enter}{Home}{Delete}/invite {Enter} ;ALT+Y: Invite the last char who whispered you to party; works no matter the resolution or any item positioning
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-!F1::ExitApp ; Alt+F1 to exit the script
-!Q::Logout() ; ALT+Q Fast logout  ; works no matter the resolution or any item positioning
-!O::CheckPos() ; ALT+O Gett the cursor position. Use it to change the position setup for Identify, OpenPortal, SwitchGem etc
-!S::POTSpam() ; Alt+S for 5 times will press 1,2,3,4,4 in fast seqvence  ; works no matter the resolution or any item positioning 
+!F1::ExitApp ; Alt+F1: Exit the script
+!Q::Logout() ; ALT+Q: Fast logout  
+!O::CheckPos() ; ALT+O Get the cursor position. Use it to change the position setup for Identify, OpenPortal, SwitchGem etc
+!S::POTSpam() ; Alt+S for 5 times will press 1,2,3,4,4 in fast seqvence 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; The following macros are NOT ALLOWED by GGG (EULA), as we send multiple server actions with one button pressed
 ; This can't be identified as we randomize all timmings, but dont use it if you want to stick with the EULA 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-!Space::OpenPortal() ; Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
-`::POT12345() ; Pressing ` once will press 1,2,3,4,5 in fast seqvence 
-!I::Identify() ; ID All Items in Inventory ; use CheckPos to change wisdom scroll position if needed
-!C::CtrlClick() ; CtrlClick full inventory (move all to stash), excepting the last 2 columnns ; use CheckPos to change position if needed
-!F::ShiftClick() ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) ; works no matter the resolution or any item positioning
+!Space::OpenPortal() ; ALT+Space: Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
+`::POT12345() ; `: Pressing ` once will press 1,2,3,4,5 in fast seqvence 
+!I::Identify(1297,616,5,10) ; ALT+I: Id all the items from Inventory 
++I::Identify(41,188,12,12) ; SHIFT:I: Id all Items from the opened stash tab
+!C::CtrlClick(1297,616,5,10) ; ALT+C: CtrlClick full inventory excepting the last 2 columnns
++C::CtrlClick(41,188,12,4) ; SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
+!F::ShiftClick() ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) 
 !M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
 !V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -105,7 +104,7 @@ DivTrade() {
 	
 	Loop 10 { ;not 12 as we dont ctrl-move the last 2 columns (we keep there the scrols and other permanent inv stuff)
 		Loop 5 { 
-			if GetKeyState("[") = 1 
+			if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
 				break
 			
 			MouseMove , %x%, %y%
@@ -185,21 +184,21 @@ POT12345() {
 	Send 5
 	return
 }
-CtrlClick(){
+CtrlClick(iX,iY,iRow,IColumn){
 	BlockInput On
 	RandomSleep(113,138)
 	
-	; Get Pos of top left inventory cell
-	ix := 1297
-	iy := 616
+	; iX, iY -> Get Pos of top left inventory cell
+	;ix := 1297
+	;iy := 616
 	
 	delta := 53
 	x := ix
 	y := iy
 
-	Loop 10 { ;we dont ctrl-move the last 2 columns (we keep there the scrols and other permanent inv stuff)
-		Loop 5 { 
-			if GetKeyState("[") = 1 
+	Loop %iColumn% { ;we dont ctrl-move the last 2 columns (we keep there the scrols and other permanent inv stuff)
+		Loop %iRow% { 
+			if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
 				break
 			
 			Mousemove ,%x%, %y%
@@ -223,7 +222,7 @@ ShiftClick() {
 	RandomSleep(113,138)
 	
 	Loop 50 { ; change 50 to how many shift-clicks you want to perform in a series
-		if GetKeyState("[") = 1 
+		if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
 				break
 		Click
 		RandomSleep(113,138)
@@ -233,13 +232,13 @@ ShiftClick() {
 	BlockInput Off
 	return
 }
-Identify() {
+Identify(iX,iY,iRow,IColumn) {
 	BlockInput On
 	RandomSleep(113,138)
 	
 	; Get Pos of top left inventory cell
-	ix := 1297
-	iy := 616
+	;ix := 1297
+	;iy := 616
 	
 	delta := 53
 	x := ix
@@ -252,9 +251,9 @@ Identify() {
 	Send {ShiftDown} 
 	RandomSleep(113,138)
 	
-	Loop 12 {
-		Loop 5 {
-			if GetKeyState("[") = 1 
+	Loop %iColumn% {
+		Loop %iRow% {
+			if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
 				break
 			
 			MouseMove, %x%, %y%
@@ -279,7 +278,7 @@ OpenPortal(){
 	MouseGetPos xx, yy
 	Send {i}
 	
-	MouseMove, 1859, 616, 0 
+	MouseMove, 1859, 616, 0 ; portal scroll location, top right
 	RandomSleep(113,138)
 	Click Right
 	RandomSleep(113,138)
@@ -292,11 +291,11 @@ OpenPortal(){
 Logout(){
 	BlockInput On
 	Send {f}{Shift}{e}{r}{c}
-	RandomSleep(21,33)
+	RandomSleep(23,36)
 	Send {f}
-	RandomSleep(21,33)
+	RandomSleep(23,36)
 	Send {f}
-	RandomSleep(21,33)
+	RandomSleep(23,36)
 	Run cports.exe /close * * * * PathOfExileSteam.exe
 	Run cports.exe /close * * * * PathOfExile.exe
 	Send {Esc}
@@ -304,7 +303,7 @@ Logout(){
 	X := Width / 2
 	Y := Height * 0.38
 	MouseMove, %X%, %Y%
-	RandomSleep(21,33)
+	RandomSleep(23,36)
 	Click 
 	BlockInput Off
 	return
@@ -315,7 +314,6 @@ POTSpam(){
 	Send %Flask%
 	Flask += 1
 	BlockInput Off
-	
 	If Flask > 5
 		Flask = 1
 	return
