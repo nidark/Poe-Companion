@@ -25,11 +25,11 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **SHIFT+I** ID all items in the opened stash tab 
 
-**ALT+C** Ctrl-Click full inventory (move all to stash or sell all to vendor), excepting the last 2 columnns
+**ALT+C** CtrlClick full inventory (move all to stash or sell all to vendor), excepting the last 2 columnns
 
-**SHIFT+C** Ctrl-Click the opened stash tab to move 12 X 4 (rows x columns) to the Inventory
+**SHIFT+C** CtrlClick the opened stash tab to move 12 X 4 (rows x columns) to the Inventory
 
-**ALT+X**: CtrClick the opened tab from the MousePointer (needs to be a top cell). Usefull to move the second part of a stash tab to inv
+**ALT+X**: CtrClick the opened tab startring the MousePointer (needs to be a top cell). Usefull to move the second part of a stash tab to inventory.
 
 **ALT+V** Trade all your divinations
 
