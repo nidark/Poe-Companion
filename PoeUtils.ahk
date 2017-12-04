@@ -136,7 +136,7 @@ DivTrade() {
 SwitchGEM() {
 	BlockInput On
 	RandomSleep(151,163)
-			
+
 	;first gem position (in my case the first slot of a 1h weapon ... from the secondary inv II). You can put a gem from inv instead. 
 	ixFirstGem := 1379
 	iyFirstGem := 171
@@ -154,14 +154,20 @@ SwitchGEM() {
 	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
 	RandomSleep(113,138)
 	
-	Click, Right, %ixFirstGem%, %iyFirstGem%
-	RandomSleep(113,138)
+	MouseMove %ixFirstGem%, %iyFirstGem%
+	RandomSleep(56,68)
+	Click, Right 
+	RandomSleep(56,68)
 	
-	Click,  %ixSecondGem%, %iySecondGem%
-	RandomSleep(113,138)
+	MouseMove %ixSecondGem%, %iySecondGem%
+	RandomSleep(56,68)
+	Click  
+	RandomSleep(56,68)
 	
-	Click,  %ixFirstGem%, %iyFirstGem%
-	RandomSleep(113,138)
+	MouseMove %ixFirstGem%, %iyFirstGem%
+	RandomSleep(56,68)
+	Click
+	RandomSleep(56,68)
 	
 	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
 	RandomSleep(113,138)
