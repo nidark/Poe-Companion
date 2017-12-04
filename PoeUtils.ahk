@@ -110,19 +110,19 @@ DivTrade() {
 				break
 			
 			MouseMove , %x%, %y%
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			send ^{Click}
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			
 			Mousemove, %ixTrade%, %iyTrade%
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			send ^{Click}
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			
 			MouseMove, %ixTradedItem%, %iyTradedItem%
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			send ^{Click}
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			
 			y += delta			
 		}
@@ -146,7 +146,7 @@ SwitchGEM() {
 	iySecondGem := 372
 	
 	Send {F2} 
-	RandomSleep(113,138)
+	RandomSleep(56,68)
 	
 	Send {i} 
 	RandomSleep(113,138)
@@ -170,7 +170,7 @@ SwitchGEM() {
 	RandomSleep(56,68)
 	
 	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
-	RandomSleep(113,138)
+	RandomSleep(56,68)
 	
 	Send {i} 
 	BlockInput Off
@@ -179,16 +179,12 @@ SwitchGEM() {
 POT12345() {
 	Send 1
 	RandomSleep(113,138)
-	
 	Send 2
 	RandomSleep(113,138)
-	
 	Send 3
 	RandomSleep(113,138)
-	
 	Send 4
 	RandomSleep(113,138)
-	
 	Send 5
 	return
 }
@@ -281,12 +277,11 @@ OpenPortal(){
 	RandomSleep(113,138)
 	MouseGetPos xx, yy
 	Send {i}
-	
+	RandomSleep(56,68
 	MouseMove, 1859, 616, 0 ; portal scroll location, top right
-	RandomSleep(113,138)
+	RandomSleep(56,68)
 	Click Right
-	RandomSleep(113,138)
-	
+	RandomSleep(56,68)
 	Send {i}
 	MouseMove, xx, yy, 0
 	BlockInput Off
