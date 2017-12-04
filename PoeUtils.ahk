@@ -41,6 +41,7 @@ Flask=1
 ;Scroll stash tabs using mouse-wheel
 !WheelDown::Send {Right} ; ALT+WheelDown: Stash scroll 
 !WheelUp::Send {Left} ; ALT+WheelUp: Stash scroll 
+
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -71,6 +72,7 @@ Flask=1
 +I::Identify(41,188,12,12) ; SHIFT:I: Id all Items from the opened stash tab
 !C::CtrlClick(1297,616,5,10) ; ALT+C: CtrlClick full inventory excepting the last 2 columnns
 +C::CtrlClick(41,188,12,4) ; SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
+!X::CtrlClick(-1,-1,12,4) ; ALT+X: CtrClick the opened tab from the MousePointer (needs to be a top cell)
 !F::ShiftClick() ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) 
 !M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
 !V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
@@ -191,6 +193,8 @@ CtrlClick(iX,iY,iRow,IColumn){
 	; iX, iY -> Get Pos of top left inventory cell
 	;ix := 1297
 	;iy := 616
+	if iX = -1 
+		MouseGetPos iX,iY
 	
 	delta := 53
 	x := ix
