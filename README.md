@@ -8,7 +8,6 @@ All the functions will work without any changes if you:
 - keep the wisdom & portal scrolls respectively on the last 2 positions of the first row 
 
 The SwichGems function will work only if you have the same setup like me (unlikely). 
-
 Most probably you will need to adjust the positions as this is mostly character/gear based.
 
 For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in each of the respective functions.
