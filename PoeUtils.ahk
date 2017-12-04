@@ -149,10 +149,10 @@ SwitchGEM() {
 	RandomSleep(56,68)
 	
 	Send {i} 
-	RandomSleep(113,138)
+	RandomSleep(56,68)
 	
 	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
-	RandomSleep(113,138)
+	RandomSleep(56,68)
 	
 	MouseMove %ixFirstGem%, %iyFirstGem%
 	RandomSleep(56,68)
@@ -178,13 +178,13 @@ SwitchGEM() {
 }
 POT12345() {
 	Send 1
-	RandomSleep(113,138)
+	RandomSleep(103,128)
 	Send 2
-	RandomSleep(113,138)
+	RandomSleep(103,128)
 	Send 3
-	RandomSleep(113,138)
+	RandomSleep(103,128)
 	Send 4
-	RandomSleep(113,138)
+	RandomSleep(103,128)
 	Send 5
 	return
 }
@@ -256,14 +256,13 @@ Identify(iX,iY,iRow,IColumn) {
 		Loop %iRow% {
 			if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
 				break
-			
+	
 			MouseMove, %x%, %y%
 			RandomSleep(56,68)
 			Click
 			RandomSleep(56,68)
 			
-			y += delta
-			
+			y += delta		
 		}
 		y := iy
 		x += delta
@@ -276,13 +275,17 @@ Identify(iX,iY,iRow,IColumn) {
 OpenPortal(){
 	BlockInput On
 	RandomSleep(113,138)
+	
 	MouseGetPos xx, yy
 	Send {i}
 	RandomSleep(56,68)
+	
 	MouseMove, 1859, 616, 0 ; portal scroll location, top right
 	RandomSleep(56,68)
+	
 	Click Right
 	RandomSleep(56,68)
+	
 	Send {i}
 	MouseMove, xx, yy, 0
 	BlockInput Off
@@ -292,18 +295,24 @@ Logout(){
 	BlockInput On
 	Send {f}{Shift}{e}{r}{c}
 	RandomSleep(23,36)
+	
 	Send {f}
 	RandomSleep(23,36)
+	
 	Send {f}
 	RandomSleep(23,36)
+	
 	Run cports.exe /close * * * * PathOfExileSteam.exe
 	Run cports.exe /close * * * * PathOfExile.exe
+	
 	Send {Esc}
 	WinGetPos ,,,Width,Height
 	X := Width / 2
 	Y := Height * 0.38
+	
 	MouseMove, %X%, %Y%
 	RandomSleep(23,36)
+	
 	Click 
 	BlockInput Off
 	return
