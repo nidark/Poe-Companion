@@ -29,7 +29,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **SHIFT+C** CtrlClick the opened stash tab to move 12 X 4 (rows x columns) to the Inventory
 
-**ALT+X**: CtrClick the opened tab startring the MousePointer (needs to be a top cell). Usefull to move the second part of a stash tab to inventory.
+**ALT+X**: CtrClick the opened tab starting from the MousePointer (needs to be a top cell). Usefull to move the second part of a stash tab to inventory.
 
 **ALT+V** Trade all your divinations
 
