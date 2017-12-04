@@ -255,9 +255,9 @@ Identify(iX,iY,iRow,IColumn) {
 				break
 			
 			MouseMove, %x%, %y%
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			Click
-			RandomSleep(113,138)
+			RandomSleep(56,68)
 			
 			y += delta
 			
