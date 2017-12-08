@@ -37,7 +37,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **ALT+M** Switch 2 gems (ex: conc effect with area). Use CheckPos to change the gem positions in the function! 
 
-**ALT+U** ALT+U keeps a key pressed untill ALT+U is pressed again. Default is Key **Q** - can be changed in config
+**ALT+U** ALT+U keeps a key pressed until ALT+U is pressed again. Default is Key **Q** - can be changed in config
 
 
 
