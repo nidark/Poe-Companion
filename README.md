@@ -10,7 +10,7 @@ All the functions will work without any changes if you:
 The SwichGems function will work only if you have the same setup like me (unlikely). 
 Most probably you will need to adjust the positions as this is mostly character/gear based.
 
-For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in each of the respective functions.
+For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in the INI confirg file. 
 
 **FUNCTIONS:**
 
@@ -36,6 +36,8 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 **ALT+F** Shift-Click 50 times (Use it for Fusings/Jewler 6s/6l crafting)
 
 **ALT+M** Switch 2 gems (ex: conc effect with area). Use CheckPos to change the gem positions in the function! 
+
+**ALT+U** ALT+U keeps a key pressed untill ALT+U is pressed again. Default is Key **Q** - can be changed in config
 
 
 
