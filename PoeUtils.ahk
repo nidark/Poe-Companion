@@ -1,4 +1,4 @@
-;#IfWinActive Path of Exile
+#IfWinActive Path of Exile
 #SingleInstance force
 #NoEnv  
 #Warn  
