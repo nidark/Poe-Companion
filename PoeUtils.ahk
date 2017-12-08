@@ -1,4 +1,4 @@
-#IfWinActive Path of Exile
+;#IfWinActive Path of Exile
 #SingleInstance force
 #NoEnv  
 #Warn  
@@ -9,6 +9,7 @@ SetTitleMatchMode 3
 SendMode Input  
 CoordMode, Mouse, Client
 SetWorkingDir %A_ScriptDir%  
+Thread, interrupt, 0
 
 IfNotExist, cports.exe
 {
@@ -34,14 +35,91 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
 ; ! = Alt
 ; ^ = Ctrl
 ; + = Shift 
+; Global variables -> default setup for 1920x1080, having wisdom & portal scrolls respectively on the last 2 positions of the first row.  
+global CellWith=53
+global CtrlLoopCount=50
+global ShiftLoopCount=50
+global InventoryColumnsToMove=10
+global InventoryRowsToMove=5
+global InventoryX=1297
+global InventoryY=616
+global StashX=41
+global StashY=188
+global PortalScrollX=1859
+global PortalScrollY=616
+global WisdomScrollX=1820
+global WisdomScrollY=616
+global TradeButtonX=628
+global TradeButtonY=735	
+global TradedItemX=646
+global TradedItemY=565
+global CurrentGemX=1483
+global CurrentGemY=372
+global AlternateGemX=1379 
+global AlternateGemY=171
+global AlternateGemOnSecondarySlot=1
+global KeyToKeepPress="Q"
+global Speed=1
 
-Flask=1
+global KeyOn:=False
+global Flask=1
+
+If FileExist("PoeUtils.ini"){ 
+	IniRead, CellWith, PoeUtils.ini, General, CellWith
+	IniRead, CtrlLoopCount, PoeUtils.ini, General, CtrlLoopCount
+	IniRead, ShiftLoopCount, PoeUtils.ini, General, ShiftLoopCount
+	IniRead, InventoryColumnsToMove, PoeUtils.ini, General, InventoryColumnsToMove
+	IniRead, InventoryRowsToMove, PoeUtils.ini, General, InventoryRowsToMove	
+	IniRead, KeyToKeepPress, PoeUtils.ini, General, KeyToKeepPress
+	IniRead, Speed, PoeUtils.ini, General, Speed
+	IniRead, InventoryX, PoeUtils.ini, Coordinates, InventoryX
+	IniRead, InventoryY, PoeUtils.ini, Coordinates, InventoryY
+	IniRead, StashX, PoeUtils.ini, Coordinates, StashX
+	IniRead, StashY, PoeUtils.ini, Coordinates, StashY
+	IniRead, PortalScrollX, PoeUtils.ini, Coordinates, PortalScrollX
+	IniRead, PortalScrollY, PoeUtils.ini, Coordinates, PortalScrollY
+	IniRead, WisdomScrollX, PoeUtils.ini, Coordinates, WisdomScrollX
+	IniRead, WisdomScrollY, PoeUtils.ini, Coordinates, WisdomScrollY
+	IniRead, TradeButtonX, PoeUtils.ini, Coordinates, TradeButtonX
+	IniRead, TradeButtonY, PoeUtils.ini, Coordinates, TradeButtonY
+	IniRead, TradedItemX, PoeUtils.ini, Coordinates, TradedItemX
+	IniRead, TradedItemY, PoeUtils.ini, Coordinates, TradedItemY
+	IniRead, CurrentGemX, PoeUtils.ini, ItemSwap, CurrentGemX
+	IniRead, CurrentGemY, PoeUtils.ini, ItemSwap, CurrentGemY
+	IniRead, AlternateGemX, PoeUtils.ini, ItemSwap, AlternateGemX
+	IniRead, AlternateGemY, PoeUtils.ini, ItemSwap, AlternateGemY
+	IniRead, AlternateGemOnSecondarySlot, PoeUtils.ini, ItemSwap, AlternateGemOnSecondarySlot
+} else {
+	IniWrite, %CellWith%, PoeUtils.ini, General, CellWith
+	IniWrite, %CtrlLoopCount%, PoeUtils.ini, General, CtrlLoopCount
+	IniWrite, %ShiftLoopCount%, PoeUtils.ini, General, ShiftLoopCount
+	IniWrite, %InventoryColumnsToMove%, PoeUtils.ini, General, InventoryColumnsToMove
+	IniWrite, %InventoryRowsToMove%, PoeUtils.ini, General, InventoryRowsToMove	
+	IniWrite, %KeyToKeepPress%, PoeUtils.ini, General, KeyToKeepPress
+	IniWrite, %Speed%, PoeUtils.ini, General, Speed
+	IniWrite, %InventoryX%, PoeUtils.ini, Coordinates, InventoryX
+	IniWrite, %InventoryY%, PoeUtils.ini, Coordinates, InventoryY
+	IniWrite, %StashX%, PoeUtils.ini, Coordinates, StashX
+	IniWrite, %StashY%, PoeUtils.ini, Coordinates, StashY
+	IniWrite, %PortalScrollX%, PoeUtils.ini, Coordinates, PortalScrollX
+	IniWrite, %PortalScrollY%, PoeUtils.ini, Coordinates, PortalScrollY
+	IniWrite, %WisdomScrollX%, PoeUtils.ini, Coordinates, WisdomScrollX
+	IniWrite, %WisdomScrollY%, PoeUtils.ini, Coordinates, WisdomScrollY
+	IniWrite, %TradeButtonX%, PoeUtils.ini, Coordinates, TradeButtonX
+	IniWrite, %TradeButtonY%, PoeUtils.ini, Coordinates, TradeButtonY
+	IniWrite, %TradedItemX%, PoeUtils.ini, Coordinates, TradedItemX
+	IniWrite, %TradedItemY%, PoeUtils.ini, Coordinates, TradedItemY
+	IniWrite, %CurrentGemX%, PoeUtils.ini, ItemSwap, CurrentGemX
+	IniWrite, %CurrentGemY%, PoeUtils.ini, ItemSwap, CurrentGemY
+	IniWrite, %AlternateGemX%, PoeUtils.ini, ItemSwap, AlternateGemX
+	IniWrite, %AlternateGemY%, PoeUtils.ini, ItemSwap, AlternateGemY
+	IniWrite, %AlternateGemOnSecondarySlot%, PoeUtils.ini, ItemSwap, AlternateGemOnSecondarySlot
+}
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ;Scroll stash tabs using mouse-wheel
 !WheelDown::Send {Right} ; ALT+WheelDown: Stash scroll 
 !WheelUp::Send {Left} ; ALT+WheelUp: Stash scroll 
-
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -68,66 +146,56 @@ Flask=1
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 !Space::OpenPortal() ; ALT+Space: Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
 `::POT12345() ; `: Pressing ` once will press 1,2,3,4,5 in fast seqvence 
-!I::Identify(1297,616,5,10) ; ALT+I: Id all the items from Inventory 
-+I::Identify(41,188,12,12) ; SHIFT:I: Id all Items from the opened stash tab
-!C::CtrlClick(1297,616,5,10) ; ALT+C: CtrlClick full inventory excepting the last 2 columns
-+C::CtrlClick(41,188,12,4) ; SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
+!I::Identify(InventoryX,InventoryY,InventoryRowsToMove,InventoryColumnsToMove) ; ALT+I: Id all the items from Inventory 
++I::Identify(StashX,StashY,12,12) ; SHIFT:I: Id all Items from the opened stash tab
+!C::CtrlClick(InventoryX,InventoryY,InventoryRowsToMove,InventoryColumnsToMove) ; ALT+C: CtrlClick full inventory excepting the last 2 columns
++C::CtrlClick(StashX,StashY,12,4) ; SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
 !X::CtrlClick(-1,-1,12,4) ; ALT+X: CtrClick the opened tab from the MousePointer (needs to be a top cell)
-!F::ShiftClick() ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) 
+!Z::CtrlClickLoop(CtrlLoopCount) ; ALT + Z : 50 X CtrlClick at the current mouse location (ex: buys currency from vendors)
+!F::ShiftClick(ShiftLoopCount) ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) 
 !M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
 !V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
+!U::KeepKeyPressed()
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; Functions----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 RandomSleep(min,max){
 	Random, r, %min%, %max%
+	r:=floor(r/Speed)
 	Sleep %r%
 	return
 }
 DivTrade() {
 	BlockInput On
 	RandomSleep(113,138)
-	
-	; Get Pos of top left inventory cell
-	ix := 1297
-	iy := 616
-	
-	; Get pos of the trade button
-	ixTrade := 628
-	iyTrade := 735	
-
-	; Get pos of the resulted item
-	ixTradedItem := 646
-	iyTradedItem := 565	
 		
-	x := ix
-	y := iy
-	delta := 53
+	x := InventoryX
+	y := InventoryY
 	
 	Loop 10 { ;not 12 as we dont ctrl-move the last 2 columns (we keep there the scrols and other permanent inv stuff)
 		Loop 5 { 
-			if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
+			if GetKeyState("[") = 1 ; Keep[ [ pressed to quit in the middle of the loop
 				break
 			
-			MouseMove , %x%, %y%
+			MouseMove , x, y
 			RandomSleep(56,68)
 			send ^{Click}
 			RandomSleep(56,68)
 			
-			Mousemove, %ixTrade%, %iyTrade%
+			Mousemove, TradeButtonX, TradeButtonY
 			RandomSleep(56,68)
 			send ^{Click}
 			RandomSleep(56,68)
 			
-			MouseMove, %ixTradedItem%, %iyTradedItem%
+			MouseMove, TradedItemX, TradedItemY
 			RandomSleep(56,68)
 			send ^{Click}
 			RandomSleep(56,68)
 			
-			y += delta			
+			y += CellWith			
 		}
-		y := iy
-		x += delta
+		y := InventoryY
+		x += CellWith
 	}
 	
 	BlockInput Off
@@ -137,39 +205,33 @@ SwitchGEM() {
 	BlockInput On
 	RandomSleep(151,163)
 
-	;first gem position (in my case the first slot of a 1h weapon ... from the secondary inv II). You can put a gem from inv instead. 
-	ixFirstGem := 1379
-	iyFirstGem := 171
-	
-	; second gem position (gloves second gem spot in my case -> RF character here)
-	ixSecondGem := 1483
-	iySecondGem := 372
-	
 	Send {F2} 
 	RandomSleep(56,68)
 	
 	Send {i} 
 	RandomSleep(56,68)
-	
-	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
+
+	if (%AlternateGemOnSecondarySlot%=True) 
+		Send {X} 
 	RandomSleep(56,68)
 	
-	MouseMove %ixFirstGem%, %iyFirstGem%
+	MouseMove %AlternateGemX%, %AlternateGemY%
 	RandomSleep(56,68)
 	Click, Right 
 	RandomSleep(56,68)
 	
-	MouseMove %ixSecondGem%, %iySecondGem%
+	MouseMove %CurrentGemX%, %CurrentGemY%
 	RandomSleep(56,68)
 	Click  
 	RandomSleep(56,68)
 	
-	MouseMove %ixFirstGem%, %iyFirstGem%
+	MouseMove %AlternateGemX%, %AlternateGemY%
 	RandomSleep(56,68)
 	Click
 	RandomSleep(56,68)
 	
-	Send {X} ; comment this one if you want to switch with a gem from Inventory and not from the secondary weapon slot
+	if (%AlternateGemOnSecondarySlot%=True) 
+		Send {X} 
 	RandomSleep(56,68)
 	
 	Send {i} 
@@ -195,7 +257,7 @@ CtrlClick(iX,iY,iRow,IColumn){
 	if iX = -1 
 		MouseGetPos iX,iY
 	
-	delta := 53
+	delta := CellWith
 	x := ix
 	y := iy
 
@@ -217,14 +279,32 @@ CtrlClick(iX,iY,iRow,IColumn){
 		
 	BlockInput Off
  }
-ShiftClick() {    
+CtrlClickLoop(iCount) {    
+	BlockInput On
+	RandomSleep(151,163)
+	
+	Send {CtrlDown} 
+	RandomSleep(113,138)
+	
+	Loop %iCount% { ; change 50 to how many Ctrl-clicks you want to perform in a series
+		if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
+				break
+		Click
+		RandomSleep(113,138)
+		}
+	
+	Send {CTRLUp} 
+	BlockInput Off
+	return
+}
+ShiftClick(iCount) {    
 	BlockInput On
 	RandomSleep(151,163)
 	
 	Send {ShiftDown} 
 	RandomSleep(113,138)
 	
-	Loop 50 { ; change 50 to how many shift-clicks you want to perform in a series
+	Loop %iCount% { ; change 50 to how many shift-clicks you want to perform in a series
 		if GetKeyState("[") = 1 ; Keep [ pressed to quit in the middle of the loop
 				break
 		Click
@@ -280,7 +360,7 @@ OpenPortal(){
 	Send {i}
 	RandomSleep(56,68)
 	
-	MouseMove, 1859, 616, 0 ; portal scroll location, top right
+	MouseMove, PortalScrolX, PortalScrolY, 0 ; portal scroll location, top right
 	RandomSleep(56,68)
 	
 	Click Right
@@ -318,6 +398,7 @@ Logout(){
 	return
 }
 POTSpam(){
+
 	BlockInput On
 	global Flask
 	Send %Flask%
@@ -326,6 +407,15 @@ POTSpam(){
 	If Flask > 5
 		Flask = 1
 	return
+}
+KeepKeyPressed(){
+If (KeyOn = False)
+	{
+		Send {%KeyToKeepPress% Down}
+		} Else 
+			Send {%KeyToKeepPress% Up}
+	KeyOn := not(KeyOn)
+	Return
 }
 CheckPos(){
     MouseGetPos, xpos, ypos
