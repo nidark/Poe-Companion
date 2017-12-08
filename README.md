@@ -10,7 +10,7 @@ All the functions will work without any changes if you:
 The SwichGems function will work only if you have the same setup like me (unlikely). 
 Most probably you will need to adjust the positions as this is mostly character/gear based.
 
-For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in the INI config file. 
+For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in the INI config file. The INI file is created automaticaly if you dont have one for the default resolution (1920x1080).
 
 **FUNCTIONS:**
 
