@@ -211,7 +211,7 @@ SwitchGEM() {
 	Send {i} 
 	RandomSleep(56,68)
 
-	if (%AlternateGemOnSecondarySlot%=True) 
+	if (AlternateGemOnSecondarySlot==1) 
 		Send {X} 
 	RandomSleep(56,68)
 	
@@ -230,7 +230,7 @@ SwitchGEM() {
 	Click
 	RandomSleep(56,68)
 	
-	if (%AlternateGemOnSecondarySlot%=True) 
+	if (AlternateGemOnSecondarySlot==1) 
 		Send {X} 
 	RandomSleep(56,68)
 	
