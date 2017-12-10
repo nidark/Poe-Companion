@@ -24,6 +24,8 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
                 MsgBox, Error ED04 : There was a problem downloading readme.txt
 }
 
+; The most updated version is always here: https://github.com/nidark/PoeUtils
+
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; All the functions will work without any changes for windowed full-screen 1920x1080, having wisdom & portal scrolls respectively on the last 2 positions of the first row. 
 ; The SwichGem function will work only if you have the same setup like me (see details in the function). 
@@ -36,6 +38,9 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
 ; ^ = Ctrl
 ; + = Shift 
 ; Global variables -> default setup for 1920x1080, having wisdom & portal scrolls respectively on the last 2 positions of the first row.  
+
+; Global Default variables, for windowed full-screen 1920x1080 
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 global CellWith=53
 global CtrlLoopCount=50
 global ShiftLoopCount=50
@@ -60,6 +65,7 @@ global AlternateGemY=171
 global AlternateGemOnSecondarySlot=1
 global KeyToKeepPress="Q"
 global Speed=1
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 global KeyOn:=False
 global Flask=1
@@ -360,7 +366,7 @@ OpenPortal(){
 	Send {i}
 	RandomSleep(56,68)
 	
-	MouseMove, PortalScrolX, PortalScrolY, 0 ; portal scroll location, top right
+	MouseMove, PortalScrollX, PortalScrollY, 0 ; portal scroll location, top right
 	RandomSleep(56,68)
 	
 	Click Right
