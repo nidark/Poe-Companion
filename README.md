@@ -45,7 +45,11 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **ALT+Y** Invite the last char who whispered you to party
 
-**ALT + Mouse-Wheel Scroll** Navigate through stash tabs
+**CTRL+WheelDown**  Spam CTRL+CLICK (Spam-buy from vendor, quck move to stash etc )
+
+**SHIFT+WheelDown**  Spam SHIFT+CLICK  (Spam-crafting currency eg jewles, fusings)
+
+**ALT+Wheel** Navigate through stash tabs
 
 **ALT+G** /global 820
 
