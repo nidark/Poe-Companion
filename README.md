@@ -45,7 +45,7 @@ For different setups (other resolutions and/or scroll positions in inventory) yo
 
 **ALT+Y** Invite the last char who whispered you to party
 
-**CTRL+WheelDown**  Spam CTRL+CLICK (Spam-buy from vendor, quck move to stash etc )
+**CTRL+WheelDown**  Spam CTRL+CLICK (Spam-buy from vendor, quick move to stash etc )
 
 **SHIFT+WheelDown**  Spam SHIFT+CLICK  (Spam-crafting currency eg jewles, fusings)
 
