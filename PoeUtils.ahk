@@ -11,7 +11,7 @@ CoordMode, Mouse, Client
 SetWorkingDir %A_ScriptDir%  
 Thread, interrupt, 0
 
-IfNotExist, cports.exe
+IfNotExist, cports.exe 
 {
 UrlDownloadToFile, http://lutbot.com/ahk/cports.exe, cports.exe
         if ErrorLevel
@@ -23,7 +23,6 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
         if ErrorLevel
                 MsgBox, Error ED04 : There was a problem downloading readme.txt
 }
-
 ; The most updated version is always here: https://github.com/nidark/PoeUtils
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -66,9 +65,9 @@ global AlternateGemOnSecondarySlot=1
 global KeyToKeepPress="Q"
 global Speed=1
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 global KeyOn:=False
 global Flask=1
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 If FileExist("PoeUtils.ini"){ 
 	IniRead, CellWith, PoeUtils.ini, General, CellWith
@@ -122,10 +121,11 @@ If FileExist("PoeUtils.ini"){
 	IniWrite, %AlternateGemOnSecondarySlot%, PoeUtils.ini, ItemSwap, AlternateGemOnSecondarySlot
 }
 
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-;Scroll stash tabs using mouse-wheel
+; --qq---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 !WheelDown::Send {Right} ; ALT+WheelDown: Stash scroll 
-!WheelUp::Send {Left} ; ALT+WheelUp: Stash scroll 
+!WheelUp::Send {Left} ; ALT+WheelUp: Stash scroll
+^WheelDown::AutoClicks() ; CTRL+WheelDown -> Spam CTRL+CLICK
++WheelDown::AutoClicks() ; SHIFT+WheelDown -> Spam SHIFT+CLICK    
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -170,6 +170,11 @@ RandomSleep(min,max){
 	r:=floor(r/Speed)
 	Sleep %r%
 	return
+}
+AutoClicks(){
+BlockInput On 
+Send {blind}{Lbutton down}{Lbutton up} 
+BlockInput Off
 }
 DivTrade() {
 	BlockInput On
