@@ -127,6 +127,20 @@ global Flask=1
 global OnCoolDown:=[0,0,0,0,0]
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+IfNotExist, cports.exe
+{
+UrlDownloadToFile, http://lutbot.com/ahk/cports.exe, cports.exe
+        if ErrorLevel
+                MsgBox, Error ED02 : There was a problem downloading cports.exe
+UrlDownloadToFile, http://lutbot.com/ahk/cports.chm, cports.chm
+        if ErrorLevel
+                MsgBox, Error ED03 : There was a problem downloading cports.chm 
+UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
+        if ErrorLevel
+                MsgBox, Error ED04 : There was a problem downloading readme.txt
+}
+
+
 If FileExist("PoeUtils.ini"){ 
 	IniRead, CtrlLoopCount, PoeUtils.ini, General, CtrlLoopCount
 	IniRead, ShiftLoopCount, PoeUtils.ini, General, ShiftLoopCount
@@ -157,7 +171,8 @@ If FileExist("PoeUtils.ini"){
 	IniRead, AlternateGemX, PoeUtils.ini, ItemSwap, AlternateGemX
 	IniRead, AlternateGemY, PoeUtils.ini, ItemSwap, AlternateGemY
 	IniRead, AlternateGemOnSecondarySlot, PoeUtils.ini, ItemSwap, AlternateGemOnSecondarySlot
-	
+		
+	IniRead, ChatColor, PoeUtils.ini, AutoPot, ChatColor
 	IniRead, ChatX1, PoeUtils.ini, AutoPot, ChatX1
  	IniRead, ChatY1, PoeUtils.ini, AutoPot, ChatY1
  	IniRead, ChatX2, PoeUtils.ini, AutoPot, ChatX2
@@ -216,6 +231,7 @@ If FileExist("PoeUtils.ini"){
 	IniWrite, %AlternateGemY%, PoeUtils.ini, ItemSwap, AlternateGemY
 	IniWrite, %AlternateGemOnSecondarySlot%, PoeUtils.ini, ItemSwap, AlternateGemOnSecondarySlot
 	
+	IniWrite, %ChatColor%, PoeUtils.ini, AutoPot, ChatColor
 	IniWrite, %ChatX1%, PoeUtils.ini, AutoPot, ChatX1
  	IniWrite, %ChatY1%, PoeUtils.ini, AutoPot, ChatY1
  	IniWrite, %ChatX2%, PoeUtils.ini, AutoPot, ChatX2
@@ -242,7 +258,6 @@ If FileExist("PoeUtils.ini"){
 	IniWrite, %CoolDownFlask4%, PoeUtils.ini, AutoPot, CoolDownFlask4
 	IniWrite, %CoolDownFlask5%, PoeUtils.ini, AutoPot, CoolDownFlask5
 }
-
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; Gui 
@@ -538,18 +553,22 @@ OpenPortal(){
 }
 Logout(){
 	BlockInput On
+	Run cports.exe /close * * * * PathOfExileSteam.exe
+	Run cports.exe /close * * * * PathOfExile_x64Steam.exe
+	Run cports.exe /close * * * * PathOfExile.exe
+	Run cports.exe /close * * * * PathOfExile_x64.exe
+
 	Send {Esc}
 	WinGetPos ,,,Width,Height
 	X := Width / 2
 	Y := Height * 0.48
 	MouseMove, %X%, %Y%
-	RandomSleep(13,19)
+	RandomSleep(21,33)
 	Click 
 	BlockInput Off
 	return
 }
 POTSpam(){
-
 	BlockInput On
 	global Flask
 	Send %Flask%
@@ -606,12 +625,13 @@ GameTick(){
 			GuiUpdate()
 			Exit
 		} 
+		
 		if (AutoPot=1) {
 		Trigger:=00000
 		GetKeyState, state, %MainAttackKey%
 		if state = D
 			Trigger:=Trigger+TriggerMainAttack
-			
+		
 		GetKeyState, state, %SecondaryAttackKey%
 		if state = D
 			Trigger=:Trigger+TriggerSecondaryAttack
@@ -644,6 +664,7 @@ GameTick(){
 					send %FL%
 					OnCoolDown[FL]:=1 
 					CoolDown:=CoolDownFlask%FL%
+					;msgbox %FL% %CoolDown%
 					settimer,TimmerFlask%FL%,%CoolDown%
 					sleep=rand(103,128)			
 					}
