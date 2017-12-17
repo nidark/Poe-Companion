@@ -1,16 +1,11 @@
 # Poe Utils
 **Path Of Exile - AHK - Util Macros**
 
-All the functions will work without any changes if you:
+Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
 
-- use **Windowed FullScreen 1920x1080** 
+**GemSwap and AutoPot** (Flask logic and cooldowns + Main/Secondary attack) will need changes in the INI based on your setup and prefferences.
 
-- keep the wisdom & portal scrolls respectively on the last 2 positions of the first row 
-
-The SwichGems function will work only if you have the same setup like me (unlikely). 
-Most probably you will need to adjust the positions as this is mostly character/gear based.
-
-For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in the INI config file. f you dont have a INI file, it will be created automaticaly for the default resolution (1920x1080).
+For different resolutions all you need to do is to use **ALT+O** in game to find your resolution coordinates and change them in the INI file (10 mins work).
 
 **SUPPORT:** https://discord.gg/qfDkyTs
 
