@@ -77,11 +77,11 @@ global ChatY1=875
 global ChatX2=20
 global ChatY2=890
 
-global HPColor=0x2112B1
-global HPX1=100
-global HPY1=873
-global HPX2=132
-global HPY2=1077
+global HPColor=0x0D1126
+global HPX1=908
+global HPY1=325
+global HPX2=1012
+global HPY2=327
 
 global HPQuitTreshold=25 ; dont go lower than 25
 global HPLowTreshold=40
@@ -117,7 +117,7 @@ global CoolDownFlask5:=500
 
 ; Not in INI
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-global HPY=HPY2-HPY1
+global HPX=HPX2-HPX1
 global Trigger=00000
 global AutoQuit=0 
 global AutoPot=0 
@@ -126,6 +126,7 @@ global KeyOn:=False
 global Flask=1
 global OnCoolDown:=[0,0,0,0,0]
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 IfNotExist, cports.exe
 {
@@ -139,8 +140,6 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
         if ErrorLevel
                 MsgBox, Error ED04 : There was a problem downloading readme.txt
 }
-
-
 If FileExist("PoeUtils.ini"){ 
 	IniRead, CtrlLoopCount, PoeUtils.ini, General, CtrlLoopCount
 	IniRead, ShiftLoopCount, PoeUtils.ini, General, ShiftLoopCount
@@ -269,6 +268,7 @@ Gui -Caption
 Gui, Font, bold cFFFF00 S9, Trebuchet MS
 Gui, Add, Text, y+0.5 BackgroundTrans vT1, [F12] A-POTS: OFF
 Gui, Add, Text, y+0.5 BackgroundTrans vT2, [F11] A-QUIT: OFF
+Gui, Add, Text, y+0.5 BackgroundTrans vT3, HP:100
 Gui, Show, x%GuiX% y%GuiY%
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -604,6 +604,7 @@ GuiUpdate(){
 
 	GuiControl ,, T1, [F12] A-POTS: %AutoPotToggle%
 	GuiControl ,, T2, [F11] A-QUIT: %AutoQuitToggle%
+	GuiControl ,, T3, HP: %CurrentHP%
 	Return
 }
 GameTick(){
@@ -612,11 +613,11 @@ GameTick(){
 	if (ErrorLevel=1){
 		Exit
 	}
-	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 60, Fast
+	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 5, Fast
 	if (ErrorLevel=0) {
-		CurrentHP:=Round((HPY2-HPMatchY)/HPY*100,0)
+		CurrentHP:=Round((HPMatchX-HPX1)/HPX*100,0)
 		GuiUpdate()
-		;HPQuit event
+		;HPQuit event12345
 		if  ((CurrentHP < HPQuitTreshold) and (Autoquit=1)) {
 			Logout()
 			AutoPot=0
@@ -674,7 +675,10 @@ GameTick(){
 		;Fileappend,"`n", PoeUtils.txt		
 		} 
 		 
-	} ;else {msgbox "NoHP"}
+	} else {
+	CurrentHP:=100
+	GuiUpdate()
+	}
 Return
 }
 
