@@ -12,7 +12,7 @@ SetWorkingDir %A_ScriptDir%
 Thread, interrupt, 0
 
 ; The most updated version is always here: https://github.com/nidark/PoeUtils
-;
+; Support: https://discord.gg/qfDkyTs
  
 ; If you need to make changes, DONT change the variables from the script! 
 ; Change them in the INI file!
