@@ -12,6 +12,8 @@ Most probably you will need to adjust the positions as this is mostly character/
 
 For different setups (other resolutions and/or scroll positions in inventory) you need to use the CheckPos function and change the coordonates in the INI config file. f you dont have a INI file, it will be created automaticaly for the default resolution (1920x1080).
 
+**SUPPORT:** https://discord.gg/qfDkyTs
+
 **FUNCTIONS:**
 
 ..................................................................................................................................................................................................................................................
