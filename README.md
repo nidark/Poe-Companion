@@ -12,6 +12,7 @@ Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080*
 
 For **different resolutions** all you need to do is to use **ALT+O** in game to find your resolution coordinates and change them in the INI file (10 mins work).
 
+**Run as Administrator**if you want to **use Auto-Quit**!
 ..................................................................................................................................................................................................................................................
 
 **SUPPORT:** https://discord.gg/qfDkyTs
