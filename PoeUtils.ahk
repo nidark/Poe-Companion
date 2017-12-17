@@ -567,17 +567,11 @@ Logout(){
 		Run cports.exe /close * * * * PathOfExileSteam.exe
 		Run cports.exe /close * * * * PathOfExile.exe
 		Run cports.exe /close * * * * PathOfExile_x64.exe
-		Send {Esc}
-		MouseMove, %ExitX%, %ExitY%
-		RandomSleep(21,33)
-		Click 		
+		Send {Enter} /exit {Enter}		
 	} else {
-		Send {Esc}
-		MouseMove, %ExitX%, %ExitY%
-		RandomSleep(21,33)
-		Click 		
+		Send {Enter} /exit {Enter}		
 	}
-	RandomSleep(21,33)
+	RandomSleep(56,68)
 	BlockInput Off
 	return
 }
