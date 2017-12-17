@@ -41,7 +41,7 @@ global ShiftLoopCount=50
 global InventoryColumnsToMove=10
 global InventoryRowsToMove=5
 global KeyToKeepPress="Q"
-
+global ForceLogoutOrExitOnQuit=0
 ; Dont change the speed & the tick unless you know what you are doing
 global Speed=1
 global Tick=250
@@ -62,6 +62,8 @@ global TradedItemX=646
 global TradedItemY=565
 global GuiX=215
 global GuiY=935
+global ExitX=947
+global ExitY=471
 
 ;ItemSwap
 global CurrentGemX=1483
@@ -146,6 +148,7 @@ If FileExist("PoeUtils.ini"){
 	IniRead, InventoryColumnsToMove, PoeUtils.ini, General, InventoryColumnsToMove
 	IniRead, InventoryRowsToMove, PoeUtils.ini, General, InventoryRowsToMove	
 	IniRead, KeyToKeepPress, PoeUtils.ini, General, KeyToKeepPress
+	IniRead, ForceLogoutOrExitOnQuit, PoeUtils.ini, General, ForceLogoutOrExitOnQuit
 	IniRead, Speed, PoeUtils.ini, General, Speed
 	IniRead, Tick, PoeUtils.ini, General, Tick
 	
@@ -164,7 +167,9 @@ If FileExist("PoeUtils.ini"){
 	IniRead, TradedItemY, PoeUtils.ini, Coordinates, TradedItemY
 	IniRead, GuiX, PoeUtils.ini, Coordinates, GuiX
 	IniRead, GuiY, PoeUtils.ini, Coordinates, GuiY
-		
+	IniRead, ExitX, PoeUtils.ini, Coordinates, GuiX
+	IniRead, ExitY, PoeUtils.ini, Coordinates, GuiY
+	
 	IniRead, CurrentGemX, PoeUtils.ini, ItemSwap, CurrentGemX
 	IniRead, CurrentGemY, PoeUtils.ini, ItemSwap, CurrentGemY
 	IniRead, AlternateGemX, PoeUtils.ini, ItemSwap, AlternateGemX
@@ -205,6 +210,7 @@ If FileExist("PoeUtils.ini"){
 	IniWrite, %InventoryColumnsToMove%, PoeUtils.ini, General, InventoryColumnsToMove
 	IniWrite, %InventoryRowsToMove%, PoeUtils.ini, General, InventoryRowsToMove	
 	IniWrite, %KeyToKeepPress%, PoeUtils.ini, General, KeyToKeepPress
+	IniWrite, %ForceLogoutOrExitOnQuit%, PoeUtils.ini, General, ForceLogoutOrExitOnQuit
 	IniWrite, %Speed%, PoeUtils.ini, General, Speed
 	IniWrite, %Tick%, PoeUtils.ini, General, Tick
 	
@@ -223,6 +229,8 @@ If FileExist("PoeUtils.ini"){
 	IniWrite, %TradedItemY%, PoeUtils.ini, Coordinates, TradedItemY
 	IniWrite, %GuiX%, PoeUtils.ini, Coordinates, GuiX
 	IniWrite, %GuiY%, PoeUtils.ini, Coordinates, GuiY
+	IniWrite, %ExitX%, PoeUtils.ini, Coordinates, ExitX
+	IniWrite, %ExitY%, PoeUtils.ini, Coordinates, ExitY
 	
 	IniWrite, %CurrentGemX%, PoeUtils.ini, ItemSwap, CurrentGemX
 	IniWrite, %CurrentGemY%, PoeUtils.ini, ItemSwap, CurrentGemY
@@ -552,19 +560,24 @@ OpenPortal(){
 	return
 }
 Logout(){
+	Critical
 	BlockInput On
-	Run cports.exe /close * * * * PathOfExileSteam.exe
-	Run cports.exe /close * * * * PathOfExile_x64Steam.exe
-	Run cports.exe /close * * * * PathOfExile.exe
-	Run cports.exe /close * * * * PathOfExile_x64.exe
-
-	Send {Esc}
-	WinGetPos ,,,Width,Height
-	X := Width / 2
-	Y := Height * 0.48
-	MouseMove, %X%, %Y%
+	if (ForceLogoutOrExitOnQuit=1) {
+		Run cports.exe /close * * * * PathOfExile_x64Steam.exe
+		Run cports.exe /close * * * * PathOfExileSteam.exe
+		Run cports.exe /close * * * * PathOfExile.exe
+		Run cports.exe /close * * * * PathOfExile_x64.exe
+		Send {Esc}
+		MouseMove, %ExitX%, %ExitY%
+		RandomSleep(21,33)
+		Click 		
+	} else {
+		Send {Esc}
+		MouseMove, %ExitX%, %ExitY%
+		RandomSleep(21,33)
+		Click 		
+	}
 	RandomSleep(21,33)
-	Click 
 	BlockInput Off
 	return
 }
@@ -617,7 +630,7 @@ GameTick(){
 	if (ErrorLevel=0) {
 		CurrentHP:=Round((HPMatchX-HPX1)/HPX*100,0)
 		GuiUpdate()
-		;HPQuit event12345
+		;HPQuit event
 		if  ((CurrentHP < HPQuitTreshold) and (Autoquit=1)) {
 			Logout()
 			AutoPot=0
