@@ -1,6 +1,8 @@
 # Poe Utils
 **Path Of Exile - AHK - Util Macros**
 
+**Main Features:** Auto-pot, Auto-Quit, 1-key Fast-pot, Gem-Swap, Divination Trade, Items-ID, Ctrl-Click, Shift-Click automation (sell, buy, currency spamm), various shortcuts. 
+
 Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
 
 **GemSwap and AutoPot** (Flask logic and cooldowns + Main/Secondary attack) will need changes in the INI based on your setup and prefferences.
