@@ -5,7 +5,7 @@ Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080*
 
 **GemSwap and AutoPot** (Flask logic and cooldowns + Main/Secondary attack) will need changes in the INI based on your setup and prefferences.
 
-For different resolutions all you need to do is to use **ALT+O** in game to find your resolution coordinates and change them in the INI file (10 mins work).
+For **different resolutions** all you need to do is to use **ALT+O** in game to find your resolution coordinates and change them in the INI file (10 mins work).
 
 **SUPPORT:** https://discord.gg/qfDkyTs
 
