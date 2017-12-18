@@ -14,6 +14,7 @@ Have the game in Windowed FullScreen (preferably 1920x1080)
 ..................................................................................................................................................................................................................................................
 
 **SETUP**
+
 Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
 
 **GemSwap and AutoPot** (Flask logic and cooldowns + Main/Secondary attack) will need changes in the INI based on your setup and prefferences.
