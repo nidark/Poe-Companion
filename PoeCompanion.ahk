@@ -11,7 +11,7 @@ CoordMode, Mouse, Client
 SetWorkingDir %A_ScriptDir%  
 Thread, interrupt, 0
 
-; The most updated version is always here: https://github.com/nidark/PoeUtils
+; The most updated version is always here: https://github.com/nidark/Poe-Companion
 ; Support: https://discord.gg/qfDkyTs
  
 ; If you need to make changes, DONT change the variables from the script! 
