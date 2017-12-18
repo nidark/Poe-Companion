@@ -62,8 +62,6 @@ global TradedItemX=646
 global TradedItemY=565
 global GuiX=215
 global GuiY=935
-global ExitX=947
-global ExitY=471
 
 ;ItemSwap
 global CurrentGemX=1483
@@ -81,9 +79,9 @@ global ChatY2=890
 
 global HPColor=0x0D1126
 global HPX1=908
-global HPY1=325
+global HPY1=326
 global HPX2=1012
-global HPY2=327
+global HPY2=326
 
 global HPQuitTreshold=25 ; dont go lower than 25
 global HPLowTreshold=40
@@ -167,9 +165,7 @@ If FileExist("PoeUtils.ini"){
 	IniRead, TradedItemY, PoeUtils.ini, Coordinates, TradedItemY
 	IniRead, GuiX, PoeUtils.ini, Coordinates, GuiX
 	IniRead, GuiY, PoeUtils.ini, Coordinates, GuiY
-	IniRead, ExitX, PoeUtils.ini, Coordinates, GuiX
-	IniRead, ExitY, PoeUtils.ini, Coordinates, GuiY
-	
+		
 	IniRead, CurrentGemX, PoeUtils.ini, ItemSwap, CurrentGemX
 	IniRead, CurrentGemY, PoeUtils.ini, ItemSwap, CurrentGemY
 	IniRead, AlternateGemX, PoeUtils.ini, ItemSwap, AlternateGemX
@@ -229,9 +225,7 @@ If FileExist("PoeUtils.ini"){
 	IniWrite, %TradedItemY%, PoeUtils.ini, Coordinates, TradedItemY
 	IniWrite, %GuiX%, PoeUtils.ini, Coordinates, GuiX
 	IniWrite, %GuiY%, PoeUtils.ini, Coordinates, GuiY
-	IniWrite, %ExitX%, PoeUtils.ini, Coordinates, ExitX
-	IniWrite, %ExitY%, PoeUtils.ini, Coordinates, ExitY
-	
+		
 	IniWrite, %CurrentGemX%, PoeUtils.ini, ItemSwap, CurrentGemX
 	IniWrite, %CurrentGemY%, PoeUtils.ini, ItemSwap, CurrentGemY
 	IniWrite, %AlternateGemX%, PoeUtils.ini, ItemSwap, AlternateGemX
@@ -626,7 +620,7 @@ GameTick(){
 		GuiUpdate()
 		;HPQuit event
 		if  ((CurrentHP < HPQuitTreshold) and (Autoquit=1)) {
-			Logout()
+			Logout()			
 			AutoPot=0
 			AutoQuit=0
 			SetTimer, GameTick, Off
