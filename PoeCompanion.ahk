@@ -140,7 +140,7 @@ UrlDownloadToFile, http://lutbot.com/ahk/readme.txt, readme.txt
         if ErrorLevel
                 MsgBox, Error ED04 : There was a problem downloading readme.txt
 }
-If FileExist("PoeUtils.ini"){ 
+If FileExist("PoeCompanion.ini"){ 
 	IniRead, CtrlLoopCount, PoeUtils.ini, General, CtrlLoopCount
 	IniRead, ShiftLoopCount, PoeUtils.ini, General, ShiftLoopCount
 	IniRead, InventoryColumnsToMove, PoeUtils.ini, General, InventoryColumnsToMove
@@ -614,7 +614,7 @@ GameTick(){
 	if (ErrorLevel=1){
 		Exit
 	}
-	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 5, Fast
+	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 1, Fast
 	if (ErrorLevel=0) {
 		CurrentHP:=Round((HPMatchX-HPX1)/HPX*100,0)
 		GuiUpdate()
