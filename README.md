@@ -6,6 +6,10 @@
 
 **Main Features:** Auto-pot, Auto-Quit, 1-key Fast-pot, Gem-Swap, Divination Trade, Items-ID, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various shortcuts. 
 ..................................................................................................................................................................................................................................................
+**PREREQUISITES**
+- Have your HP bar above character enabled from game settings
+- Have the game in Windowed FullScreen (preferably 1920x1080)
+..................................................................................................................................................................................................................................................
 
 Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
 
