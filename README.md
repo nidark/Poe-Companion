@@ -29,9 +29,9 @@ For **different resolutions** all you need to do is to use **ALT+O** in game to 
 **FEATURES:**
 
 
-**F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns
+**ALT+F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns
 
-**F11**: Start/Stop Auto-Quit
+**ALT+F11**: Start/Stop Auto-Quit
 
 
 **\`** Pressing \` once will press 1,2,3,4,5 in fast seqvence 
