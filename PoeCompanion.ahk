@@ -61,7 +61,7 @@ global TradeButtonY=735
 global TradedItemX=646
 global TradedItemY=565
 global GuiX=0
-global GuiY=1025
+global GuiY=1015
 
 ;ItemSwap
 global CurrentGemX=1483
@@ -92,28 +92,29 @@ global SecondaryAttackKey="W"
 
 ;The default flask setup/example is based on the following assumptions, but you can use any flask and any trigger combinations by changing the setup in the INI file
 ; Flask 1 = Dot life flask with long effect (>7 sec - see also cooldowns)  
-; Flask 2 = Offensive (ex Sulphur, Diamond)
-; Flask 3 = Offensive/Defensive (ex Atziri)
-; Flask 4 = Defensive (ex Basalt, Stibnite)
-; Flask 5 = Instant HP 
+; Flask 2 = Offensive (ex: Diamond)
+; Flask 3 = Offensive (ex: Sulphur ) 
+; Flask 4 = Offensive/Defensive (ex Atziri)
+; Flask 5 = Defensive (ex: Stibnite )
+; 
 
 ;On low hp we fire all flasks
 global TriggerHPLow=11111
 ;on avg HP we fire all, excepting main attack and instant HP
-global TriggerHPAvg=10110
+global TriggerHPAvg=10011
 ;on avg HP we fire the first flask and the 4th flask
-global TriggerHPHigh=10010
+global TriggerHPHigh=10001
 ;On pressing the main attack we fire the main attack flask
-global TriggerMainAttack=01000
+global TriggerMainAttack=01100
 ;On pressing the main attack we fire both attack flasks
-global TriggerSecondaryAttack=01100
+global TriggerSecondaryAttack=01110
 
 ; Cooldowns for each of the 5 Flasks
 global CoolDownFlask1:=7000
-global CoolDownFlask2:=5000
-global CoolDownFlask3:=5000
+global CoolDownFlask2:=4800
+global CoolDownFlask3:=3500
 global CoolDownFlask4:=5000
-global CoolDownFlask5:=500
+global CoolDownFlask5:=3500
 
 ; Not in INI
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
