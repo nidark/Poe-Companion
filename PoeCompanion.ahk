@@ -60,8 +60,8 @@ global TradeButtonX=628
 global TradeButtonY=735	
 global TradedItemX=646
 global TradedItemY=565
-global GuiX=215
-global GuiY=935
+global GuiX=0
+global GuiY=1025
 
 ;ItemSwap
 global CurrentGemX=1483
@@ -267,10 +267,11 @@ Gui, Color, 0X130F13
 Gui +LastFound +AlwaysOnTop +ToolWindow
 WinSet, TransColor, 0X130F13
 Gui -Caption
-Gui, Font, bold cFFFF00 S9, Trebuchet MS
-Gui, Add, Text, y+0.5 BackgroundTrans vT1, [F12] A-POTS: OFF
-Gui, Add, Text, y+0.5 BackgroundTrans vT2, [F11] A-QUIT: OFF
-Gui, Add, Text, y+0.5 BackgroundTrans vT3, HP:100
+Gui, Font, bold cFFFFFF S10, Trebuchet MS
+Gui, Add, Text, y+0.5 BackgroundTrans vT3, HP 100
+Gui, Add, Text, y+0.5 BackgroundTrans vT2, Auto-Quit: OFF
+Gui, Add, Text, y+0.5 BackgroundTrans vT1, Auto-Flask: OFF
+;cFFFF00
 Gui, Show, x%GuiX% y%GuiY%
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -312,7 +313,7 @@ Gui, Show, x%GuiX% y%GuiY%
 !M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
 !V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
 !U::KeepKeyPressed()
-F11::
+!F11::
    AutoQuit := !AutoQuit
    GuiUpdate()
    if ((!AutoPot) and (!AutoQuit)) {
@@ -321,7 +322,7 @@ F11::
         SetTimer, GameTick, %Tick%	
     }
 return
-F12::
+!F12::
     AutoPot := !AutoPot
 	GuiUpdate()	
 	if ((!AutoPot) and (!AutoQuit)) {
@@ -602,16 +603,18 @@ GuiUpdate(){
 	if (AutoQuit=1) {
 	AutoQuitToggle:="ON" 
 	}else AutoQuitToggle:="OFF" 
-
-	GuiControl ,, T1, [F12] A-POTS: %AutoPotToggle%
-	GuiControl ,, T2, [F11] A-QUIT: %AutoQuitToggle%
-	GuiControl ,, T3, HP: %CurrentHP%
+	
+	GuiControl ,, T1, Auto-Flask: %AutoPotToggle%
+	GuiControl ,, T2, Auto-Quit: %AutoQuitToggle%
+	GuiControl ,, T3, HP %CurrentHP%
 	Return
 }
 GameTick(){
 	;msgbox Ticking
 	PixelSearch, ChMatchX, ChMatchY, %ChatX1%, %ChatY1%, %ChatX2%, %ChatY2%, %ChatColor%,15, Fast
 	if (ErrorLevel=1){
+		CurrentHP:=100
+		GuiUpdate()
 		Exit
 	}
 	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 1, Fast
@@ -621,9 +624,6 @@ GameTick(){
 		;HPQuit event
 		if  ((CurrentHP < HPQuitTreshold) and (Autoquit=1)) {
 			Logout()			
-			AutoPot=0
-			AutoQuit=0
-			SetTimer, GameTick, Off
 			GuiUpdate()
 			Exit
 		} 
