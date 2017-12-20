@@ -3,7 +3,8 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-**Main Features:** Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Auto-Divination Trade, Auto ID Items, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various QoL shortcuts. 
+**Main Features:** Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Auto-Divination Trade, Auto ID Items, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various QoL shortcuts
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **PREREQUISITES**
 
