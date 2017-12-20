@@ -6,13 +6,13 @@
 ..................................................................................................................................................................................................................................................
 **PREREQUISITES**
 
-Have the game in **Windowed FullScreen** (preferably 1920x1080 STEAM Edition)
+- Have the game in **Windowed FullScreen** (preferably 1920x1080 STEAM Edition)
 
-Have your **HP bar above character** enabled from game settings
+- Have your **HP bar above character** enabled from game settings
 
-Make sure you have the **character max-zoom out**!
+- Make sure you have the **character max-zoom out**!
 
-**Replace** PoeCompanion.INI with the INI that suits your resolution and game type (STEAM/Standalone)
+- **Replace** PoeCompanion.INI with the INI that suits your resolution and game type (STEAM/Standalone)
 
 ..................................................................................................................................................................................................................................................
 
@@ -20,11 +20,11 @@ Make sure you have the **character max-zoom out**!
 
 Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
 
-**GemSwap and AutoPot** (Flask logic and cooldowns + Main/Secondary attack) will need changes in the INI based on your setup and prefferences.
+**GemSwap and Auto-Flask** will need changes in the INI based on your setup and prefferences.
 
 For **different resolutions** all you need to do is to use **ALT+O** in game to find your resolution coordinates and change them in the INI file (10 mins work).
 
-**Run as Administrator** if you want to **use Auto-Quit**! You dont need to run as admin it if you just want to use the exit to character screen.
+**Run as Administrator** if you want to **use Auto-Quit**! You **dont need to run as admin** if you just want to use the exit to character screen.
 ..................................................................................................................................................................................................................................................
 
 **SUPPORT:** https://discord.gg/qfDkyTs
@@ -33,7 +33,7 @@ For **different resolutions** all you need to do is to use **ALT+O** in game to 
 **FEATURES:**
 
 
-**ALT+F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns
+**ALT+F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns !!!
 
 **ALT+F11**: Start/Stop Auto-Quit
 
