@@ -112,8 +112,6 @@ This can't be identified as we randomize all timmings, but dont use it if you wa
 **SETUP**
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-..................................................................................................................................................................................................................................................
-
 **GENERAL**
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,7 +137,7 @@ The default ini/config is for the Steam version.
 
 For Standalone version of 1920x1080, replace first the PoeCompanion.INI with the contents of PoeCompanion_1920x1080Standalone.ini.
 
-GemSwap:
+**GemSwap:**
 1. Put the mouse over the Gem you currently use, press ALT+O and replace the in the INI file the CurrentGemX and CurrentGemY values with the ones from the pop-up window.
 
 2. Do the same for the Gem you want to swap for, and change AlternateGemX and AlternateGemY
