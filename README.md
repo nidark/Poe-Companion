@@ -2,6 +2,7 @@
 **Path Of Exile - Companion (AHK)**
 
 ..................................................................................................................................................................................................................................................
+
 **Main Features:** Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Auto-Divination Trade, Auto ID Items, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various QoL shortcuts. 
 ..................................................................................................................................................................................................................................................
 **PREREQUISITES**
@@ -18,13 +19,13 @@
 
 **SETUP**
 
-Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
+- Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
 
-**GemSwap and Auto-Flask** will need changes in the INI based on your setup and prefferences.
+- **GemSwap and Auto-Flask** will need changes in the INI based on your setup and prefferences.
 
-For **different resolutions** all you need to do is to use **ALT+O** in game to find your resolution coordinates and change them in the INI file (10 mins work).
+- For **different resolutions** all you need to do is to use **ALT+O** in game to find your resolution coordinates and change them in the INI file (10 mins work).
 
-**Run as Administrator** if you want to **use Auto-Quit**! You **dont need to run as admin** if you just want to use the exit to character screen.
+- **Run as Administrator** if you want to **use Auto-Quit**! You **dont need to run as admin** if you just want to use the exit to character screen.
 ..................................................................................................................................................................................................................................................
 
 **SUPPORT:** https://discord.gg/qfDkyTs
