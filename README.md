@@ -1,10 +1,5 @@
 **Path Of Exile - Companion (AHK)**
 ..................................................................................................................................................................................................................................................
-- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `#f03c15`
-```diff
-+ this will be highlighted in green
-- this will be highlighted in red
-```
 **Main Features:** Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Divination Trade, Items-ID, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various shortcuts. 
 ..................................................................................................................................................................................................................................................
 **PREREQUISITES**
