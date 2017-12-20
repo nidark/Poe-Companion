@@ -337,6 +337,9 @@ return
 return
 
 ; Functions
+LeaveParty(){
+
+}
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 RandomSleep(min,max){
 	Random, r, %min%, %max%
@@ -612,7 +615,7 @@ GuiUpdate(){
 }
 GameTick(){
 	;msgbox Ticking
-	PixelSearch, ChMatchX, ChMatchY, %ChatX1%, %ChatY1%, %ChatX2%, %ChatY2%, %ChatColor%,15, Fast
+	PixelSearch, ChMatchX, ChMatchY, %ChatX1%, %ChatY1%, %ChatX2%, %ChatY2%, %ChatColor%,10, Fast
 	if (ErrorLevel=1){
 		CurrentHP:=100
 		GuiUpdate()
