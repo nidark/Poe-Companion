@@ -6,7 +6,7 @@
 ..................................................................................................................................................................................................................................................
 **PREREQUISITES**
 
-- Have the game in **Windowed FullScreen** (preferably 1920x1080 STEAM Edition)
+- Have the game in **Windowed FullScreen** (preferably 1920x1080)
 
 - Have your **HP bar above character** enabled from game settings
 
@@ -36,7 +36,6 @@ For **different resolutions** all you need to do is to use **ALT+O** in game to 
 **ALT+F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns !!!
 
 **ALT+F11**: Start/Stop Auto-Quit
-
 
 **\`** Pressing \` once will press 1,2,3,4,5 in fast seqvence 
 
