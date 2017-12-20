@@ -150,11 +150,13 @@ If your alternate gem is on the secondary weapons slot (II), leave AlternateGemO
 
 If you keep the alternate gem in the inventory, put AlternateGemOnSecondarySlot=0
 
-Auto-Flask: 
+**Auto-Flask:** 
+
 The default flask setup/example is based on my usage on the current character, so you need to change it, to fit your flask setup.
 You can use any flask and any trigger combinations, by changing the setup in the INI file for the Auto-Pot section:
 
-[AutoPot]
+**[AutoPot]**
+
 HPQuitTreshold=25 - No need to change, unless you want 
 
 HPLowTreshold=40  - No need to change, unless you want 
@@ -196,6 +198,7 @@ TriggerMainAttack=01000 -> Means that when you press the MainAttack button the s
 CoolDownFlask2=5000 -> Means that Flask 2 will be fired every 5 seconds if/when needed, but not faster 
 
 **Windowed FullScreen - Other Resolutions**
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ONLY If you have a different screen resolution than the default one (Windowed FullScreen 1920x1080) you will need to change the following in INI, using ALT+O function while in game.
 If you use Steam version start from the default Steam version of the INI ... if you use Standalone start from the Standalone one.
@@ -203,7 +206,8 @@ If you use Steam version start from the default Steam version of the INI ... if 
 For example, for the inventory change: 
 Put the mouse on the first cell in the inventory, press ALT+O, take the coordinates and modify them in the INI file (InventoryX and InventoryY in this case).
 
-[Coordinates]
+**[Coordinates]**
+
 InventoryX=1297 - First cell from the Inventory 
 
 InventoryY=616  - First cell from the Inventory 
@@ -232,7 +236,8 @@ GuiX=215 -  GUI position
 
 GuiY=935 -  GUI position 
 
-[ItemSwap]
+
+**[ItemSwap]**
 
 CurrentGemX=1483 - Curent GEM position
 
@@ -242,7 +247,8 @@ AlternateGemX=1379 - New Gem position
 
 AlternateGemY=171 - New Gem position
 
-[AutoPot]
+
+**[AutoPot]**
 
 ChatX1=13 - Chat Icon Position - top left of the icon(Chat Icon is the small round icon on the left, just above your HP pool)
 
