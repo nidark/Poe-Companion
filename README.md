@@ -1,5 +1,5 @@
 ```diff
-+**Path Of Exile - Companion (AHK)**
+**Path Of Exile - Companion (AHK)**
 ```
 ..................................................................................................................................................................................................................................................
 **Main Features:** Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Divination Trade, Items-ID, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various shortcuts. 
