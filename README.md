@@ -1,10 +1,10 @@
 
 **Path Of Exile - Companion (AHK)**
 
-..................................................................................................................................................................................................................................................
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Main Features:** Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Auto-Divination Trade, Auto ID Items, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various QoL shortcuts. 
-..................................................................................................................................................................................................................................................
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **PREREQUISITES**
 
 - Have the game in **Windowed FullScreen** (preferably 1920x1080)
@@ -131,6 +131,7 @@ To change such a location you just put the mouse in the respective place, press 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Windowed FullScreen 1920x1080: GemSwap & Auto-Flask** 
+
 The default ini/config is for the Steam version. 
 
 For Standalone version of 1920x1080, replace first the PoeCompanion.INI with the contents of PoeCompanion_1920x1080Standalone.ini.
@@ -202,32 +203,58 @@ For example, for the inventory change:
 Put the mouse on the first cell in the inventory, press ALT+O, take the coordinates and modify them in the INI file (InventoryX and InventoryY in this case).
 
 [Coordinates]
-Code:
 InventoryX=1297 - First cell from the Inventory 
+
 InventoryY=616  - First cell from the Inventory 
+
 StashX=41 - First cell from the STASH
+
 StashY=188 - First cell from the STASH
+
 PortalScrollX=1859  - Portal scroll position from Inventory
+
 PortalScrollY=616  - Portal scroll position from Inventory
+
 WisdomScrollX=1820 - Wisdom scroll position from Inventory
+
 WisdomScrollY=616 - Wisdom scroll position from Inventory
+
 TradeButtonX=628  - Divination Cards Trade Button position 
+
 TradeButtonY=735  - Divination Cards Trade Button position 
+
 TradedItemX=646 -  Divination Cards Item position 
+
 TradedItemY=565   - Divination Cards Item position 
+
 GuiX=215 -  GUI position 
+
 GuiY=935 -  GUI position 
+
 [ItemSwap]
+
 CurrentGemX=1483 - Curent GEM position
+
 CurrentGemY=372  - Curent GEM position
+
 AlternateGemX=1379 - New Gem position
+
 AlternateGemY=171 - New Gem position
+
 [AutoPot]
+
 ChatX1=13 - Chat Icon Position - top left of the icon(Chat Icon is the small round icon on the left, just above your HP pool)
+
 ChatY1=875  - Chat Icon Position - top left of the icon
+
 ChatX2=20 - Chat Icon Position - bottom right of the icon
+
 ChatY2=890 - Chat Icon Position - bottom right of the icon
+
 HPX1=908 - HP bar left position (the one above the character's head)
+
 HPY1=325 - HP bar left position (the one above the character's head)
+
 HPX2=1012 - HP bar right position (the one above the character's head)
+
 HPY2=327- HP bar right position (the one above the character's head)
