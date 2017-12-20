@@ -5,11 +5,14 @@
 ..................................................................................................................................................................................................................................................
 **PREREQUISITES**
 
-Have the game in **Windowed FullScreen** (preferably 1920x1080)
+Have the game in **Windowed FullScreen** (preferably 1920x1080 STEAM Edition)
 
 Have your **HP bar above character** enabled from game settings
 
 Make sure you have the **character max-zoom out**!
+
+**Replace** PoeCompanion.INI with the INI that suits your resolution and game type (STEAM/Standalone)
+
 ..................................................................................................................................................................................................................................................
 
 **SETUP**
