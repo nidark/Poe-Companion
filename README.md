@@ -109,5 +109,102 @@ The  macros from the first section are NOT ALLOWED by GGG (EULA), as we send mul
 
 This can't be identified as we randomize all timmings, but dont use it if you want to stick to the EULA 
 
+
+**SETUP**
+
 ..................................................................................................................................................................................................................................................
 
+**GENERAL**
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The script works by clicking and reading data from different static screen locations. 
+The default setup is for Windowed FullScreen 1920x1080, so for other resolutions, you will need to make a few changes.
+To change such a location you just put the mouse in the respective place, press ALT+O, read the coordinates from the pop-out window and modify them in the INI file. 
+
+**PREREQUISITES**
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+- Have the game in Windowed FullScreen (preferably 1920x1080, STEAM edition)
+- Have your HP bar above character enabled from game settings
+- Make sure you have the character max-zoom out!
+- Replace PoeCompanion.INI with the INI that suits your resolution and game type (STEAM/Standalone) if I provided one on GitHub.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Windowed FullScreen 1920x1080: GemSwap & Auto-Flask** 
+The default ini/config is for the Steam version. 
+For Standalone version of 1920x1080, replace first the PoeCompanion.INI with the contents of PoeCompanion_1920x1080Standalone.ini.
+
+GemSwap:
+1. Put the mouse over the Gem you currently use, press ALT+O and replace the in the INI file the CurrentGemX and CurrentGemY values with the ones from the pop-up window.
+2. Do the same for the Gem you want to swap for, and change AlternateGemX and AlternateGemY
+3. Save the INI file and restart the script.
+4. Close the Inventory and press ALT+M. The script should change the Gems between themselfs.
+
+If your alternate gem is on the secondary weapons slot (II), leave AlternateGemOnSecondarySlot=1.
+If you keep the alternate gem in the inventory, put AlternateGemOnSecondarySlot=0
+
+Auto-Flask: 
+The default flask setup/example is based on my usage on the current character, so you need to change it, to fit your flask setup.
+You can use any flask and any trigger combinations, by changing the setup in the INI file for the Auto-Pot section:
+
+[AutoPot]
+Code:
+HPQuitTreshold=25 - No need to change, unless you want 
+HPLowTreshold=40  - No need to change, unless you want 
+HPAvgTreshold=65  - No need to change, unless you want 
+HPHighTreshold=90  - No need to change, unless you want 
+
+MainAttackKey=Q  - Whatever you use as primary attack
+SecondaryAttackKey=W - Secondary attack
+
+TriggerHPLow=11111 
+TriggerHPAvg=10110
+TriggerHPHigh=10010
+TriggerMainAttack=01000
+TriggerSecondaryAttack=01100
+
+CoolDownFlask1=7000 - Flask 1 cooldown (7 secs default)
+CoolDownFlask2=5000
+CoolDownFlask3=5000
+CoolDownFlask4=5000
+CoolDownFlask5=500
+For example:
+TriggerHPAvg=10110 -> Means that when your HP reaches HPAvgTreshold you ask to fire the pot 1,3,4 ... (10110)
+TriggerMainAttack=01000 -> Means that when you press the MainAttack button the script will fire the second flask (01000)
+CoolDownFlask2=5000 -> Means that Flask 2 will be fired every 5 seconds if/when needed, but not faster 
+
+**Windowed FullScreen - Other Resolutions**
+ONLY If you have a different screen resolution than the default one (Windowed FullScreen 1920x1080) you will need to change the following in INI, using ALT+O function while in game.
+If you use Steam version start from the default Steam version of the INI ... if you use Standalone start from the Standalone one.
+   
+For example, for the inventory change: 
+Put the mouse on the first cell in the inventory, press ALT+O, take the coordinates and modify them in the INI file (InventoryX and InventoryY in this case).
+
+[Coordinates]
+Code:
+InventoryX=1297 - First cell from the Inventory 
+InventoryY=616  - First cell from the Inventory 
+StashX=41 - First cell from the STASH
+StashY=188 - First cell from the STASH
+PortalScrollX=1859  - Portal scroll position from Inventory
+PortalScrollY=616  - Portal scroll position from Inventory
+WisdomScrollX=1820 - Wisdom scroll position from Inventory
+WisdomScrollY=616 - Wisdom scroll position from Inventory
+TradeButtonX=628  - Divination Cards Trade Button position 
+TradeButtonY=735  - Divination Cards Trade Button position 
+TradedItemX=646 -  Divination Cards Item position 
+TradedItemY=565   - Divination Cards Item position 
+GuiX=215 -  GUI position 
+GuiY=935 -  GUI position 
+[ItemSwap]
+CurrentGemX=1483 - Curent GEM position
+CurrentGemY=372  - Curent GEM position
+AlternateGemX=1379 - New Gem position
+AlternateGemY=171 - New Gem position
+[AutoPot]
+ChatX1=13 - Chat Icon Position - top left of the icon(Chat Icon is the small round icon on the left, just above your HP pool)
+ChatY1=875  - Chat Icon Position - top left of the icon
+ChatX2=20 - Chat Icon Position - bottom right of the icon
+ChatY2=890 - Chat Icon Position - bottom right of the icon
+HPX1=908 - HP bar left position (the one above the character's head)
+HPY1=325 - HP bar left position (the one above the character's head)
+HPX2=1012 - HP bar right position (the one above the character's head)
+HPY2=327- HP bar right position (the one above the character's head)
