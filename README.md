@@ -115,9 +115,12 @@ This can't be identified as we randomize all timmings, but dont use it if you wa
 ..................................................................................................................................................................................................................................................
 
 **GENERAL**
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 The script works by clicking and reading data from different static screen locations. 
+
 The default setup is for Windowed FullScreen 1920x1080, so for other resolutions, you will need to make a few changes.
+
 To change such a location you just put the mouse in the respective place, press ALT+O, read the coordinates from the pop-out window and modify them in the INI file. 
 
 **PREREQUISITES**
@@ -130,15 +133,20 @@ To change such a location you just put the mouse in the respective place, press 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Windowed FullScreen 1920x1080: GemSwap & Auto-Flask** 
 The default ini/config is for the Steam version. 
+
 For Standalone version of 1920x1080, replace first the PoeCompanion.INI with the contents of PoeCompanion_1920x1080Standalone.ini.
 
 GemSwap:
 1. Put the mouse over the Gem you currently use, press ALT+O and replace the in the INI file the CurrentGemX and CurrentGemY values with the ones from the pop-up window.
+
 2. Do the same for the Gem you want to swap for, and change AlternateGemX and AlternateGemY
+
 3. Save the INI file and restart the script.
+
 4. Close the Inventory and press ALT+M. The script should change the Gems between themselfs.
 
 If your alternate gem is on the secondary weapons slot (II), leave AlternateGemOnSecondarySlot=1.
+
 If you keep the alternate gem in the inventory, put AlternateGemOnSecondarySlot=0
 
 Auto-Flask: 
