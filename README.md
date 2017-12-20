@@ -63,8 +63,6 @@
 
 **ALT+U** ALT+U keeps a key pressed until ALT+U is pressed again. Default is Key **Q** - can be changed in config
 
-
-
 ..................................................................................................................................................................................................................................................
 
 **ALT+Y** Invite the last char who whispered you to party
@@ -124,6 +122,7 @@ The default setup is for Windowed FullScreen 1920x1080, so for other resolutions
 To change such a location you just put the mouse in the respective place, press ALT+O, read the coordinates from the pop-out window and modify them in the INI file. 
 
 **PREREQUISITES**
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 - Have the game in Windowed FullScreen (preferably 1920x1080, STEAM edition)
 - Have your HP bar above character enabled from game settings
@@ -154,32 +153,48 @@ The default flask setup/example is based on my usage on the current character, s
 You can use any flask and any trigger combinations, by changing the setup in the INI file for the Auto-Pot section:
 
 [AutoPot]
-Code:
 HPQuitTreshold=25 - No need to change, unless you want 
+
 HPLowTreshold=40  - No need to change, unless you want 
+
 HPAvgTreshold=65  - No need to change, unless you want 
+
 HPHighTreshold=90  - No need to change, unless you want 
 
 MainAttackKey=Q  - Whatever you use as primary attack
+
 SecondaryAttackKey=W - Secondary attack
 
 TriggerHPLow=11111 
+
 TriggerHPAvg=10110
+
 TriggerHPHigh=10010
+
 TriggerMainAttack=01000
+
 TriggerSecondaryAttack=01100
 
 CoolDownFlask1=7000 - Flask 1 cooldown (7 secs default)
+
 CoolDownFlask2=5000
+
 CoolDownFlask3=5000
+
 CoolDownFlask4=5000
-CoolDownFlask5=500
+
+CoolDownFlask5=3500
+
 For example:
+
 TriggerHPAvg=10110 -> Means that when your HP reaches HPAvgTreshold you ask to fire the pot 1,3,4 ... (10110)
+
 TriggerMainAttack=01000 -> Means that when you press the MainAttack button the script will fire the second flask (01000)
+
 CoolDownFlask2=5000 -> Means that Flask 2 will be fired every 5 seconds if/when needed, but not faster 
 
 **Windowed FullScreen - Other Resolutions**
+
 ONLY If you have a different screen resolution than the default one (Windowed FullScreen 1920x1080) you will need to change the following in INI, using ALT+O function while in game.
 If you use Steam version start from the default Steam version of the INI ... if you use Standalone start from the Standalone one.
    
