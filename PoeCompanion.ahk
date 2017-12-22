@@ -18,7 +18,7 @@ Thread, interrupt, 0
 ; Change them in the INI file!
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-; Most of the functions will work without any changes for windowed full-screen 1920x1080, having the wisdom & portal scrolls respectively on the last 2 positions of the first row. 
+; Most of the functions will work without any changes for windowed full-screen 1920x1080 Steam Edition, having the wisdom & portal scrolls respectively on the last 2 positions of the first row. 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; The SwichGem function & Main/Secondary attack auto pot will work only if you have the same setup like me.   
 ; BUT most probably you will need to adjust those positions in INI using "ALT+O", as this is mostly character & skill-key based.
@@ -71,17 +71,17 @@ global AlternateGemY=171
 global AlternateGemOnSecondarySlot=1
 
 ;AutoPot Setup
-global ChatColor=0x2E8BD1
-global ChatX1=13
+global ChatColor=0x0E6DBF
+global ChatX1=10
 global ChatY1=875
-global ChatX2=20
+global ChatX2=24
 global ChatY2=890
 
-global HPColor=0x0D1126
+global HPColor=0x080C18
 global HPX1=908
-global HPY1=326
+global HPY1=325
 global HPX2=1012
-global HPY2=326
+global HPY2=329
 
 global HPQuitTreshold=25 ; dont go lower than 25
 global HPLowTreshold=40
@@ -126,6 +126,7 @@ global CurrentHP=100
 global KeyOn:=False
 global Flask=1
 global OnCoolDown:=[0,0,0,0,0]
+global debug=0
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -314,6 +315,16 @@ Gui, Show, x%GuiX% y%GuiY%
 !M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
 !V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
 !U::KeepKeyPressed()
+!D::SwitchDebug()
+
+SwitchDebug(){
+debug=!debug
+if Debug {
+	msgbox "Debug mode enabled!"
+} else
+	msgbox "Debug mode disabled!"
+}
+
 !F11::
    AutoQuit := !AutoQuit
    GuiUpdate()
@@ -615,23 +626,25 @@ GuiUpdate(){
 }
 GameTick(){
 	;msgbox Ticking
+	;if Debug {FileAppend, FormatTime, T, %A_Now%, M/dd/yy h:mmtt Testing Chat Icon Existence `n, PoeCompanion.log}
 	PixelSearch, ChMatchX, ChMatchY, %ChatX1%, %ChatY1%, %ChatX2%, %ChatY2%, %ChatColor%,10, Fast
 	if (ErrorLevel=1){
 		CurrentHP:=100
 		GuiUpdate()
 		Exit
 	}
-	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 1, Fast
+	
+	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 2, Fast
 	if (ErrorLevel=0) {
 		CurrentHP:=Round((HPMatchX-HPX1)/HPX*100,0)
 		GuiUpdate()
+		
 		;HPQuit event
 		if  ((CurrentHP < HPQuitTreshold) and (Autoquit=1)) {
 			Logout()			
 			GuiUpdate()
 			Exit
-		} 
-		
+		} 		
 		if (AutoPot=1) {
 		Trigger:=00000
 		GetKeyState, state, %MainAttackKey%
