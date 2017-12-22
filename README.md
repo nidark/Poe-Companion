@@ -205,7 +205,7 @@ If you use Steam version start from the default Steam version of the INI ... if 
 
 Be aware:
 - The expected HPColor is the color of the HP bar without life (the black color of the HP bar that represents the life lost), so dont't pick a green pixel.
-- To pick the Chat color correctly, keep the mouse presseed on it and press ALT+O.  (When you just hover ... is changing his color!)(edited)
+- To pick the Chat color correctly, keep the mouse presseed on it and press ALT+O.  (When you just hover ... is changing his color!)
 
 For example, for the inventory change: 
 Put the mouse on the first cell in the inventory, press ALT+O, take the coordinates and modify them in the INI file (InventoryX and InventoryY in this case).
