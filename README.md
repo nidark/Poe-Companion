@@ -124,7 +124,7 @@ To change such a location you just put the mouse in the respective place, press 
 **PREREQUISITES**
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
-- Have the game in Windowed FullScreen (preferably 1920x1080, STEAM edition)
+- Have the game in Windowed FullScreen (preferably 1920x1080)
 - Have your HP bar above character enabled from game settings
 - Make sure you have the character max-zoom out!
 - Replace PoeCompanion.INI with the INI that suits your resolution and game type (STEAM/Standalone) if I provided one on GitHub.
