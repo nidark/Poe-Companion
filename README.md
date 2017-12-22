@@ -202,7 +202,11 @@ CoolDownFlask2=5000 -> Means that Flask 2 will be fired every 5 seconds if/when 
 
 ONLY If you have a different screen resolution than the default one (Windowed FullScreen 1920x1080) you will need to change the following in INI, using ALT+O function while in game.
 If you use Steam version start from the default Steam version of the INI ... if you use Standalone start from the Standalone one.
-   
+
+Be aware:
+- The expected HPColor is the color of the HP bar without life (the black color of the HP bar that represents the life lost), so dont't pick a green pixel.
+- To pick the Chat color correctly, keep the mouse presseed on it and press ALT+O.  (When you just hover ... is changing his color!)(edited)
+
 For example, for the inventory change: 
 Put the mouse on the first cell in the inventory, press ALT+O, take the coordinates and modify them in the INI file (InventoryX and InventoryY in this case).
 
