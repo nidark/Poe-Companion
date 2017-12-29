@@ -14,7 +14,6 @@ Thread, interrupt, 0
 I_Icon = PoeC.ico
 IfExist, %I_Icon%
   Menu, Tray, Icon, %I_Icon%
-return
 
 ; The most updated version is always here: https://github.com/nidark/Poe-Companion
 ; Support: https://discord.gg/qfDkyTs
