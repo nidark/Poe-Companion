@@ -152,6 +152,21 @@ If your alternate gem is on the secondary weapons slot (II), leave AlternateGemO
 
 If you keep the alternate gem in the inventory, put AlternateGemOnSecondarySlot=0
 
+**Trade Spam**
+
+**[Trade]**
+
+TradeDelay=30000 - Delay between 2 rounds of Trade spamming
+
+TradeChannelDelay=2500 - Delay between 2 messages (in 2 consecutive channels)
+
+TradeChannelStart=1 
+
+TradeChannelStop=20
+
+TradeMessage=WTB Ex 1:85c, Alch 4:1c, Jew 13:1c, Alt 15:1c, Chroma 15:1c - CHANGE this as you need!
+
+
 **Auto-Flask:** 
 
 The default flask setup/example is based on my usage on the current character, so you need to change it, to fit your flask setup.
