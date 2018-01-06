@@ -37,9 +37,11 @@ Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Auto-Divination Trade, Auto ID 
 **FEATURES:**
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-**ALT+F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns !!!
+**ALT+F10**: Start/Stop Trade-Spammer: Modify your PoeCompanion.INI TradeMessage, Channels and Delays.
 
 **ALT+F11**: Start/Stop Auto-Quit
+
+**ALT+F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns !!!
 
 **\`** Pressing \` once will press 1,2,3,4,5 in fast seqvence 
 
