@@ -2,7 +2,7 @@
 **Path Of Exile - Companion (AHK)**
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Auto-flask, Auto-Quit, 1-key Fast-pot, Gem-Swap, Auto-Divination Trade, Auto ID Items, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various QoL shortcuts
+Auto-flask, Auto-Quit, 1-key Fast-pot, Trade-Spam, Gem-Swap, Auto-Divination Trade, Auto ID Items, Ctrl-Click & Shift-Click automations (sell, buy, currency spamm), various QoL shortcuts
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **PREREQUISITES**
