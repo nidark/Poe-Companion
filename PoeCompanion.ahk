@@ -17,6 +17,18 @@ IfExist, %I_Icon%
 
 ; The most updated version is always here: https://github.com/nidark/Poe-Companion
 ; Support: https://discord.gg/qfDkyTs
+
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;Copyright (c) 2017, Nidark
+;All rights reserved.
+
+;Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+;   * Partial or integral redistributions of source code in any form (code/binary) cannot be sold, but only provided free of any charge.
+;   * Partial or integral redistributions of source code in any form (code/binary) must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+;   * The name of the contributors may not be used to endorse or promote products derived from this software without specific prior written permission.
+
+; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 ; If you need to make changes, DONT change the variables from the script! 
 ; Change them in the INI file!
@@ -64,8 +76,8 @@ global TradeButtonX=628
 global TradeButtonY=735	
 global TradedItemX=646
 global TradedItemY=565
-global GuiX=0
-global GuiY=1015
+global GuiX=-5
+global GuiY=1005
 
 ;ItemSwap
 global CurrentGemX=1483
@@ -120,12 +132,20 @@ global CoolDownFlask3:=3500
 global CoolDownFlask4:=5000
 global CoolDownFlask5:=3500
 
+; Trade Spam
+global TradeDelay:=30000
+global TradeChannelDelay:=2500
+global TradeChannelStart:=1
+global TradeChannelStop:=20
+global TradeMessage:="WTB Ex 1:85c, Alch 4:1c, Jew 13:1c, Alt 15:1c, Chrom 15:1c"
+
 ; Not in INI
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 global HPX=HPX2-HPX1
 global Trigger=00000
 global AutoQuit=0 
 global AutoPot=0 
+global TradeSpam=0 
 global CurrentHP=100
 global KeyOn:=False
 global Flask=1
@@ -204,6 +224,12 @@ If FileExist("PoeCompanion.ini"){
 	IniRead, CoolDownFlask3, PoeCompanion.ini, AutoPot, CoolDownFlask3
 	IniRead, CoolDownFlask4, PoeCompanion.ini, AutoPot, CoolDownFlask4
 	IniRead, CoolDownFlask5, PoeCompanion.ini, AutoPot, CoolDownFlask5
+	
+	IniRead, TradeDelay, PoeCompanion.ini, Trade, TradeDelay
+	IniRead, TradeChannelDelay, PoeCompanion.ini, Trade, TradeChannelDelay
+	IniRead, TradeChannelStart, PoeCompanion.ini, Trade, TradeChannelStart
+	IniRead, TradeChannelStop, PoeCompanion.ini, Trade, TradeChannelStop
+	IniRead, TradeMessage, PoeCompanion.ini, Trade, TradeMessage
  	
 } else {
 	
@@ -264,6 +290,13 @@ If FileExist("PoeCompanion.ini"){
 	IniWrite, %CoolDownFlask3%, PoeCompanion.ini, AutoPot, CoolDownFlask3
 	IniWrite, %CoolDownFlask4%, PoeCompanion.ini, AutoPot, CoolDownFlask4
 	IniWrite, %CoolDownFlask5%, PoeCompanion.ini, AutoPot, CoolDownFlask5
+	
+	IniWrite, %TradeDelay%, PoeCompanion.ini, Trade, TradeDelay
+	IniWrite, %TradeChannelDelay%, PoeCompanion.ini, Trade, TradeChannelDelay
+	IniWrite, %TradeChannelStart%, PoeCompanion.ini, Trade, TradeChannelStart
+	IniWrite, %TradeChannelStop%, PoeCompanion.ini, Trade, TradeChannelStop
+	IniWrite, %TradeMessage%, PoeCompanion.ini, Trade, TradeMessage
+
 }
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -274,9 +307,10 @@ Gui +LastFound +AlwaysOnTop +ToolWindow
 WinSet, TransColor, 0X130F13
 Gui -Caption
 Gui, Font, bold cFFFFFF S10, Trebuchet MS
-Gui, Add, Text, y+0.5 BackgroundTrans vT3, HP 100
+Gui, Add, Text, y+0.5 BackgroundTrans vT1, HP 100
 Gui, Add, Text, y+0.5 BackgroundTrans vT2, Auto-Quit: OFF
-Gui, Add, Text, y+0.5 BackgroundTrans vT1, Auto-Flask: OFF
+Gui, Add, Text, y+0.5 BackgroundTrans vT3, Auto-Flask: OFF
+Gui, Add, Text, y+0.5 BackgroundTrans vT4, Trade-Spam: OFF
 ;cFFFF00
 Gui, Show, x%GuiX% y%GuiY%
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -289,37 +323,37 @@ Gui, Show, x%GuiX% y%GuiY%
 ^WheelDown::AutoClicks() ; CTRL+WheelDown -> Spam CTRL+CLICK
 +WheelDown::AutoClicks() ; SHIFT+WheelDown -> Spam SHIFT+CLICK    
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-!G::Send {Enter} /global 820 {Enter} ; ALT+G
-!T::Send {Enter} /trade 820 {Enter} ; ALT+T
-!H::Send {Enter} /hideout {Enter} ; ALT+H
-!R::Send {Enter} /remaining {Enter} ; ALT+R
-!B::Send {Enter} /abandon_daily {Enter} ; ALT+B
-!L::Send {Enter} /itemlevel {Enter} ; ALT+L
-!P::Send {Enter} /passives {Enter} ; ALT+P
-!E::Send {Enter} /exit {Enter} ; ALT+E: Exit to char selection
-!Y::Send ^{Enter}{Home}{Delete}/invite {Enter} ;ALT+Y: Invite the last char who whispered you to party; works no matter the resolution or any item positioning
+$!G::Send {Enter} /global 820 {Enter} ; ALT+G
+$!T::Send {Enter} /trade 820 {Enter} ; ALT+T
+$!H::Send {Enter} /hideout {Enter} ; ALT+H
+$!R::Send {Enter} /remaining {Enter} ; ALT+R
+$!B::Send {Enter} /abandon_daily {Enter} ; ALT+B
+$!L::Send {Enter} /itemlevel {Enter} ; ALT+L
+$!P::Send {Enter} /passives {Enter} ; ALT+P
+$!E::Send {Enter} /exit {Enter} ; ALT+E: Exit to char selection
+$!Y::Send ^{Enter}{Home}{Delete}/invite {Enter} ;ALT+Y: Invite the last char who whispered you to party; works no matter the resolution or any item positioning
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-!F1::ExitApp  ; Alt+F1: Exit the script
-!Q::Logout() ; ALT+Q: Fast logout  
-!O::CheckPos() ; ALT+O Get the cursor position. Use it to change the position setup for Identify, OpenPortal, SwitchGem etc
-!S::POTSpam() ; Alt+S for 5 times will press 1,2,3,4,4 in fast seqvence 
+$!F1::ExitApp  ; Alt+F1: Exit the script
+$!Q::Logout() ; ALT+Q: Fast logout  
+$!O::CheckPos() ; ALT+O Get the cursor position. Use it to change the position setup for Identify, OpenPortal, SwitchGem etc
+$!S::POTSpam() ; Alt+S for 5 times will press 1,2,3,4,4 in fast seqvence 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; The following macros are NOT ALLOWED by GGG (EULA), as we send multiple server actions with one button pressed
 ; This can't be identified as we randomize all timmings, but dont use it if you want to stick with the EULA 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-!Space::OpenPortal() ; ALT+Space: Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
-`::POT12345() ; `: Pressing ` once will press 1,2,3,4,5 in fast seqvence 
-!I::Identify(InventoryX,InventoryY,InventoryRowsToMove,InventoryColumnsToMove) ; ALT+I: Id all the items from Inventory 
-+I::Identify(StashX,StashY,12,12) ; SHIFT:I: Id all Items from the opened stash tab
-!C::CtrlClick(InventoryX,InventoryY,InventoryRowsToMove,InventoryColumnsToMove) ; ALT+C: CtrlClick full inventory excepting the last 2 columns
-+C::CtrlClick(StashX,StashY,12,4) ; SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
-!X::CtrlClick(-1,-1,12,4) ; ALT+X: CtrClick the opened tab from the MousePointer (needs to be a top cell)
-!Z::CtrlClickLoop(CtrlLoopCount) ; ALT + Z : 50 X CtrlClick at the current mouse location (ex: buys currency from vendors)
-!F::ShiftClick(ShiftLoopCount) ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) 
-!M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
-!V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
-!U::KeepKeyPressed()
-!D::SwitchDebug()
+$!Space::OpenPortal() ; ALT+Space: Open a portal using a portal scroll from the top right inv slot; use CheckPos to change portal scroll position if needed
+$`::POT12345() ; `: Pressing ` once will press 1,2,3,4,5 in fast seqvence 
+$!I::Identify(InventoryX,InventoryY,InventoryRowsToMove,InventoryColumnsToMove) ; ALT+I: Id all the items from Inventory 
+$+I::Identify(StashX,StashY,12,12) ; SHIFT:I: Id all Items from the opened stash tab
+$!C::CtrlClick(InventoryX,InventoryY,InventoryRowsToMove,InventoryColumnsToMove) ; ALT+C: CtrlClick full inventory excepting the last 2 columns
+$+C::CtrlClick(StashX,StashY,12,4) ; SHIFT+C: CtrlClick the opened stash tab to move 12 X 4 rows x columns to the Inventory
+$!X::CtrlClick(-1,-1,12,4) ; ALT+X: CtrClick the opened tab from the MousePointer (needs to be a top cell)
+$!Z::CtrlClickLoop(CtrlLoopCount) ; ALT + Z : 50 X CtrlClick at the current mouse location (ex: buys currency from vendors)
+$!F::ShiftClick(ShiftLoopCount) ; ShiftClick 50 times (Use it for Fusings/Jewler 6s/6l crafting) 
+$!M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
+$!V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
+$!U::KeepKeyPressed()
+$!D::SwitchDebug()
 
 SwitchDebug(){
 debug=!debug
@@ -329,22 +363,33 @@ if Debug {
 	msgbox "Debug mode disabled!"
 }
 
-!F11::
+$!F10::
+	TradeSpam := !TradeSpam
+	GuiUpdate()
+    if (!TradeSpam) {
+        SetTimer, TTradeSpam, Off
+    } else {
+        SetTimer, TTradeSpam, %TradeDelay%		
+    }
+return
+	
+$!F11::
    AutoQuit := !AutoQuit
    GuiUpdate()
    if ((!AutoPot) and (!AutoQuit)) {
-        SetTimer, GameTick, Off
+        SetTimer, TGameTick, Off
     } else {
-        SetTimer, GameTick, %Tick%	
+        SetTimer, TGameTick, %Tick%	
     }
 return
-!F12::
+
+$!F12::
     AutoPot := !AutoPot
 	GuiUpdate()	
 	if ((!AutoPot) and (!AutoQuit)) {
-        SetTimer, GameTick, Off
+        SetTimer, TGameTick, Off
     } else {
-        SetTimer, GameTick, %Tick%	
+        SetTimer, TGameTick, %Tick%	
     }
 return
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -355,7 +400,6 @@ return
 LeaveParty(){
 
 }
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 RandomSleep(min,max){
 	Random, r, %min%, %max%
 	r:=floor(r/Speed)
@@ -623,12 +667,17 @@ GuiUpdate(){
 	AutoQuitToggle:="ON" 
 	}else AutoQuitToggle:="OFF" 
 	
-	GuiControl ,, T1, Auto-Flask: %AutoPotToggle%
+	if (TradeSpam=1) {
+	TradeSpamToggle:="ON" 
+	}else TradeSpamToggle:="OFF" 
+	
+	GuiControl ,, T1, HP %CurrentHP%
 	GuiControl ,, T2, Auto-Quit: %AutoQuitToggle%
-	GuiControl ,, T3, HP %CurrentHP%
+	GuiControl ,, T3, Auto-Flask: %AutoPotToggle%
+	GuiControl ,, T4, Trade-Spam: %TradeSpamToggle%
 	Return
 }
-GameTick(){
+TGameTick(){
 	;msgbox Ticking
 	;if Debug {FileAppend, FormatTime, T, %A_Now%, M/dd/yy h:mmtt Testing Chat Icon Existence `n, PoeCompanion.log}
 	PixelSearch, ChMatchX, ChMatchY, %ChatX1%, %ChatY1%, %ChatX2%, %ChatY2%, %ChatColor%,10, Fast
@@ -703,9 +752,30 @@ GameTick(){
 	}
 Return
 }
+TTradeSpam(){
+BlockInput On
+Sendinput {ALT up}
 
-; Timmers
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+l:= TradeChannelStop-TradeChannelStart+1
+TradeChannel:= TradeChannelStart
+
+Loop %l%{
+	if GetKeyState("[") = 1 { ; Keep [ pressed to quit in the middle of the loop
+		TradeSpam := 0
+		GuiUpdate()
+		SetTimer, TTradeSpam, Off	
+		break
+	}
+	Send {Enter} /trade %TradeChannel% {Enter}
+	RandomSleep(113,138)
+	Send {Enter} $ %TradeMessage% {Enter}	
+	RandomSleep(113,138)
+	TradeChannel++	
+	sleep %TradeChannelDelay%
+}
+BlockInput Off
+} 
+
 TimmerFlask1:
 	OnCoolDown[1]:=0
 	settimer,TimmerFlask1,delete
