@@ -39,6 +39,10 @@ Auto-flask, Auto-Quit, 1-key Fast-pot, Trade-Spam, Gem-Swap, Auto-Divination Tra
 
 **ALT+F10**: Start/Stop Trade-Spammer: Modify your PoeCompanion.INI TradeMessage, Channels and Delays.
 
+**ALT+Y** Invite the last char who whispered you to party
+
+**CTRL+Y** Invite the last char who whispered you to trade
+
 **ALT+F11**: Start/Stop Auto-Quit
 
 **ALT+F12**: Start/Stop Auto-Pot. Setup in the INI file the flasks and cooldowns !!!
@@ -66,8 +70,6 @@ Auto-flask, Auto-Quit, 1-key Fast-pot, Trade-Spam, Gem-Swap, Auto-Divination Tra
 **ALT+U** ALT+U keeps a key pressed until ALT+U is pressed again. Default is Key **Q** - can be changed in config
 
 ..................................................................................................................................................................................................................................................
-
-**ALT+Y** Invite the last char who whispered you to party
 
 **CTRL+WheelDown**  Spam CTRL+CLICK (Spam-buy from vendor, quick move to stash etc )
 
