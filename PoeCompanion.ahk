@@ -332,6 +332,12 @@ $!L::Send {Enter} /itemlevel {Enter} ; ALT+L
 $!P::Send {Enter} /passives {Enter} ; ALT+P
 $!E::Send {Enter} /exit {Enter} ; ALT+E: Exit to char selection
 $!Y::Send ^{Enter}{Home}{Delete}/invite {Enter} ;ALT+Y: Invite the last char who whispered you to party; works no matter the resolution or any item positioning
+$+Y::Send ^{Enter}{Home}{Delete}/tradewith {Enter} ; Invite the last char who whispered you to trade
+^!Y:: ; Link the current item to the last person that whispered you
+    Send ^{Enter}
+    Sleep 111
+    Send ^!{Click}{Space}
+Return
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 $!F1::ExitApp  ; Alt+F1: Exit the script
 $!Q::Logout() ; ALT+Q: Fast logout  
