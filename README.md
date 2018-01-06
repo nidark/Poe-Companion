@@ -164,7 +164,7 @@ TradeChannelStart=1
 
 TradeChannelStop=20
 
-TradeMessage=WTB Ex 1:85c, Alch 4:1c, Jew 13:1c, Alt 15:1c, Chroma 15:1c - CHANGE this as you need!
+TradeMessage=WTB Ex 1:85c, Alch 4:1c, Jew 13:1c, Alt 15:1c, Chroma 15:1c - **CHANGE this as you need!**
 
 
 **Auto-Flask:** 
