@@ -7,7 +7,7 @@ Auto-flask, Auto-Quit, 1-key Fast-pot, Trade-Spam, Gem-Swap, Auto-Divination Tra
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **PREREQUISITES**
 
-- Have the game in **Windowed FullScreen** (preferably 1920x1080)
+- Have the game in **Windowed FullScreen** (preferably 1920x1080, DX11, Steam)
 
 - Have your **HP bar above character** enabled from game settings
 
@@ -19,7 +19,7 @@ Auto-flask, Auto-Quit, 1-key Fast-pot, Trade-Spam, Gem-Swap, Auto-Divination Tra
 
 **SETUP**
 
-- Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080** with wisdom & portal scrolls on the last 2 positions of the first row.
+- Most of the functions will work automaticaly on **Windowed FullScreen 1920x1080 DX11** with wisdom & portal scrolls on the last 2 positions of the first row.
 
 - **GemSwap and Auto-Flask** will need changes in the INI based on your setup and prefferences.
 
@@ -126,13 +126,13 @@ To change such a location you just put the mouse in the respective place, press 
 **PREREQUISITES**
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
-- Have the game in Windowed FullScreen (preferably 1920x1080)
+- Have the game in Windowed FullScreen (preferably 1920x1080, DX11)
 - Have your HP bar above character enabled from game settings
 - Make sure you have the character max-zoom out!
 - Replace PoeCompanion.INI with the INI that suits your resolution and game type (STEAM/Standalone) if I provided one on GitHub.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Windowed FullScreen 1920x1080: GemSwap & Auto-Flask**
+**Windowed FullScreen 1920x1080, DX11: GemSwap & Auto-Flask**
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The default ini/config is for the Steam version. 
@@ -199,7 +199,7 @@ TriggerMainAttack=01000 -> Means that when you press the MainAttack button the s
 
 CoolDownFlask2=5000 -> Means that Flask 2 will be fired every 5 seconds if/when needed, but not faster 
 
-**Windowed FullScreen - Other Resolutions**
+**Windowed FullScreen - Other Resolutions/Non DX11**
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ONLY If you have a different screen resolution than the default one (Windowed FullScreen 1920x1080) you will need to change the following in INI, using ALT+O function while in game.
