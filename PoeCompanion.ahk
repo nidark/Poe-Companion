@@ -29,7 +29,7 @@
 ; For different setups (resolutions and/or scroll positions) you need to use the "ALT+O" function and change the coordonates in the INI file.
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#IfWinActive Path of Exile
+;#IfWinActive Path of Exile
 #SingleInstance force
 #NoEnv  
 #Warn  
@@ -365,9 +365,9 @@ $!F10::
 	TradeSpam := !TradeSpam
 	GuiUpdate()
     if (!TradeSpam) {
-        SetTimer, TTradeSpam, Off
+        SetTimer TTradeSpam, Off
     } else {
-        SetTimer, TTradeSpam, %TradeDelay%		
+        SetTimer TTradeSpam, %TradeDelay%		
     }
 return
 	
@@ -375,9 +375,9 @@ $!F11::
    AutoQuit := !AutoQuit
    GuiUpdate()
    if ((!AutoPot) and (!AutoQuit)) {
-        SetTimer, TGameTick, Off
+        SetTimer TGameTick, Off
     } else {
-        SetTimer, TGameTick, %Tick%	
+        SetTimer TGameTick, %Tick%	
     }
 return
 
@@ -385,9 +385,9 @@ $!F12::
     AutoPot := !AutoPot
 	GuiUpdate()	
 	if ((!AutoPot) and (!AutoQuit)) {
-        SetTimer, TGameTick, Off
+        SetTimer TGameTick, Off
     } else {
-        SetTimer, TGameTick, %Tick%	
+        SetTimer TGameTick, %Tick%	
     }
 return
 return
