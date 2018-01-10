@@ -734,7 +734,7 @@ TGameTick(){
 					send %FL%
 					OnCoolDown[FL]:=1 
 					CoolDown:=CoolDownFlask%FL%
-					settimer,TimmerFlask%FL%,%CoolDown%
+					settimer, TimmerFlask%FL%, %CoolDown%
 					sleep=rand(103,128)			
 					}
 			}
