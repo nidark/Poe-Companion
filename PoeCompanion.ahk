@@ -29,7 +29,7 @@
 ; For different setups (resolutions and/or scroll positions) you need to use the "ALT+O" function and change the coordonates in the INI file.
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-;#IfWinActive Path of Exile
+#IfWinActive Path of Exile
 #SingleInstance force
 #NoEnv  
 #Warn  
