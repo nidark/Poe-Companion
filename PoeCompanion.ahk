@@ -1,3 +1,34 @@
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; Copyright (c) 2017, Nidark
+; All rights reserved.
+;
+; Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+;   * Partial or integral redistributions of source code in any form (code/binary) cannot be sold, but only provided free of any charge.
+;   * Partial or integral redistributions of source code in any form (code/binary) must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+;   * The name of the contributors may not be used to endorse or promote products derived from this software without specific prior written permission.
+;
+; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; The most updated version is always here: https://github.com/nidark/Poe-Companion
+; Support: https://discord.gg/qfDkyTs
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; If you need to make changes, DONT change the variables from the script! 
+; Change them in the PoeCompanion.INI file!
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; Most of the functions will work without any INI changes for windowed full-screen 1920x1080 Steam Edition DX11, having the wisdom & portal scrolls respectively on the last 2 positions of the first row. 
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; The SwichGem function & Auto-flask will work only if you have the same setup like me.   
+; But most probably you will need to adjust those positions & flask logic in INI using "ALT+O", as this is mostly character & skill-key based.
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; For different setups (resolutions and/or scroll positions) you need to use the "ALT+O" function and change the coordonates in the INI file.
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #IfWinActive Path of Exile
 #SingleInstance force
 #NoEnv  
@@ -15,42 +46,12 @@ I_Icon = PoeC.ico
 IfExist, %I_Icon%
   Menu, Tray, Icon, %I_Icon%
 
-; The most updated version is always here: https://github.com/nidark/Poe-Companion
-; Support: https://discord.gg/qfDkyTs
-
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-;Copyright (c) 2017, Nidark
-;All rights reserved.
-
-;Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-;   * Partial or integral redistributions of source code in any form (code/binary) cannot be sold, but only provided free of any charge.
-;   * Partial or integral redistributions of source code in any form (code/binary) must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-;   * The name of the contributors may not be used to endorse or promote products derived from this software without specific prior written permission.
-
-; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 
-; If you need to make changes, DONT change the variables from the script! 
-; Change them in the INI file!
-
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-; Most of the functions will work without any changes for windowed full-screen 1920x1080 Steam Edition, having the wisdom & portal scrolls respectively on the last 2 positions of the first row. 
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-; The SwichGem function & Main/Secondary attack auto pot will work only if you have the same setup like me.   
-; BUT most probably you will need to adjust those positions in INI using "ALT+O", as this is mostly character & skill-key based.
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-; For different setups (resolution and/or scroll positions) you need to use the "ALT+O" function and change the coordonates in teh INI file.
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-; Legend:
-; ! = Alt
-; ^ = Ctrl
-; + = Shift 
-
-; Global variables -> Default setup for 1920x1080, having wisdom & portal scrolls respectively on the last 2 positions of the first row.  
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; Global variables
+; Default setup for 1920x1080, having wisdom & portal scrolls respectively on the last 2 positions of the first row.  
 ; DON'T CHANGE them here. If you need to make changes, do change the INI file!
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ;General
 global CtrlLoopCount=50
 global ShiftLoopCount=50
@@ -99,30 +100,18 @@ global HPY1=325
 global HPX2=1012
 global HPY2=329
 
-global HPQuitTreshold=25 ; dont go lower than 25
+global HPQuitTreshold=25
 global HPLowTreshold=40
 global HPAvgTreshold=65
-global HPHighTreshold=90 ; don't go higer than 90
+global HPHighTreshold=90
 global MainAttackKey="Q"
 global SecondaryAttackKey="W"
 
-;The default flask setup/example is based on the following assumptions, but you can use any flask and any trigger combinations by changing the setup in the INI file
-; Flask 1 = Dot life flask with long effect (>7 sec - see also cooldowns)  
-; Flask 2 = Offensive (ex: Diamond)
-; Flask 3 = Offensive (ex: Sulphur ) 
-; Flask 4 = Offensive/Defensive (ex Atziri)
-; Flask 5 = Defensive (ex: Stibnite )
-; 
-
-;On low hp we fire all flasks
+;The default flask setup/example is based on my setup, but you can use any flask and any trigger combinations by changing the setup in the INI file
 global TriggerHPLow=11111
-;on avg HP we fire all, excepting main attack and instant HP
 global TriggerHPAvg=10011
-;on avg HP we fire the first flask and the 4th flask
 global TriggerHPHigh=10001
-;On pressing the main attack we fire the main attack flask
 global TriggerMainAttack=01100
-;On pressing the main attack we fire both attack flasks
 global TriggerSecondaryAttack=01110
 
 ; Cooldowns for each of the 5 Flasks
@@ -139,7 +128,8 @@ global TradeChannelStart:=1
 global TradeChannelStop:=20
 global TradeMessage:="WTB Ex 1:85c, Alch 4:1c, Jew 13:1c, Alt 15:1c, Chrom 15:1c"
 
-; Not in INI
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; Extra vars - Not in INI
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 global HPX=HPX2-HPX1
 global Trigger=00000
@@ -152,7 +142,6 @@ global Flask=1
 global OnCoolDown:=[0,0,0,0,0]
 global debug=0
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 IfNotExist, cports.exe
 {
@@ -298,9 +287,12 @@ If FileExist("PoeCompanion.ini"){
 	IniWrite, %TradeMessage%, PoeCompanion.ini, Trade, TradeMessage
 
 }
-
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; Gui 
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+; Gui (default bottom left)
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Gui, Color, 0X130F13
 Gui +LastFound +AlwaysOnTop +ToolWindow
@@ -311,12 +303,12 @@ Gui, Add, Text, y+0.5 BackgroundTrans vT1, HP 100
 Gui, Add, Text, y+0.5 BackgroundTrans vT2, Auto-Quit: OFF
 Gui, Add, Text, y+0.5 BackgroundTrans vT3, Auto-Flask: OFF
 Gui, Add, Text, y+0.5 BackgroundTrans vT4, Trade-Spam: OFF
-;cFFFF00
 Gui, Show, x%GuiX% y%GuiY%
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; KEY Binding
+; Legend:   ! = Alt      ^ = Ctrl     + = Shift 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 !WheelDown::Send {Right} ; ALT+WheelDown: Stash scroll 
 !WheelUp::Send {Left} ; ALT+WheelUp: Stash scroll
@@ -331,7 +323,7 @@ $!B::Send {Enter} /abandon_daily {Enter} ; ALT+B
 $!L::Send {Enter} /itemlevel {Enter} ; ALT+L
 $!P::Send {Enter} /passives {Enter} ; ALT+P
 $!E::Send {Enter} /exit {Enter} ; ALT+E: Exit to char selection
-$!Y::Send ^{Enter}{Home}{Delete}/invite {Enter} ;ALT+Y: Invite the last char who whispered you to party; works no matter the resolution or any item positioning
+$!Y::Send ^{Enter}{Home}{Delete}/invite {Enter} ;ALT+Y: Invite the last char who whispered you to party
 $+Y::Send ^{Enter}{Home}{Delete}/tradewith {Enter} ; Invite the last char who whispered you to trade
 ^!Y:: ; Link the current item to the last person that whispered you
     Send ^{Enter}
@@ -684,7 +676,6 @@ GuiUpdate(){
 	Return
 }
 TGameTick(){
-	;msgbox Ticking
 	;if Debug {FileAppend, FormatTime, T, %A_Now%, M/dd/yy h:mmtt Testing Chat Icon Existence `n, PoeCompanion.log}
 	PixelSearch, ChMatchX, ChMatchY, %ChatX1%, %ChatY1%, %ChatX2%, %ChatY2%, %ChatColor%,10, Fast
 	if (ErrorLevel=1){
@@ -692,79 +683,72 @@ TGameTick(){
 		GuiUpdate()
 		Exit
 	}
-	
-	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 2, Fast
-	if (ErrorLevel=0) {
-		CurrentHP:=Round((HPMatchX-HPX1)/HPX*100,0)
-		GuiUpdate()
-		
-		;HPQuit event
-		if  ((CurrentHP < HPQuitTreshold) and (Autoquit=1)) {
-			Logout()			
-			GuiUpdate()
-			Exit
-		} 		
-		if (AutoPot=1) {
+
+	if (AutoPot=1) {
 		Trigger:=00000
 		GetKeyState, state, %MainAttackKey%
 		if state = D
 			Trigger:=Trigger+TriggerMainAttack
-		
 		GetKeyState, state, %SecondaryAttackKey%
 		if state = D
 			Trigger=:Trigger+TriggerSecondaryAttack
-			
-		;HPLow event	
+	}	
+		
+	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 2, Fast
+	if (ErrorLevel=0) {
+		CurrentHP:=Round((HPMatchX-HPX1)/HPX*100,0)
+		GuiUpdate()
+		if  ((Autoquit=1) and (CurrentHP < HPQuitTreshold) ) {
+			Logout()			
+			GuiUpdate()
+			Exit
+		} 		
+		if (AutoPot=1) {	
 		if (CurrentHP < HPLowTreshold) {
 			Trigger:=Trigger+TriggerHPLow
 		} else {
-				;HPAvg event
 				if (CurrentHP <HPAvgTreshold) {
 					Trigger:=Trigger+TriggerHPAvg
-	
 				} else {
-						;HPHigh event
 						if (CurrentHP < HPHighTreshold) {
 							Trigger:=Trigger+TriggerHPHigh
 						}
 		
 				} 
 		}	
-		STrigger:= SubStr("00000" Trigger,-4)
-		; Trigger the flasks
-		FL=1
-		loop 5 {
-			FLVal:=SubStr(STrigger,FL,1)+0
-			if (FLVal > 0){
-				cd:=OnCoolDown[FL]
-				if (cd=0) {
-					;Fileappend,(HP: %CurrentHP% Flasks: %STrigger% Sends %FL%), PoeUtils.txt
-					send %FL%
-					OnCoolDown[FL]:=1 
-					CoolDown:=CoolDownFlask%FL%
-					;msgbox %FL% %CoolDown%
-					settimer,TimmerFlask%FL%,%CoolDown%
-					sleep=rand(103,128)			
-					}
-			}
-			FL:=FL+1
-		}
-		;Fileappend,"`n", PoeUtils.txt		
+		;if Debug {Fileappend,"`n", PoeUtils.txt}		
 		} 
 		 
 	} else {
 	CurrentHP:=100
 	GuiUpdate()
 	}
+	; Trigger the flasks
+	if (AutoPot=1) {
+		STrigger:= SubStr("00000" Trigger,-4)
+		FL=1
+		loop 5 {
+			FLVal:=SubStr(STrigger,FL,1)+0
+			if (FLVal > 0){
+				cd:=OnCoolDown[FL]
+				if (cd=0) {
+					;if debug {Fileappend,(HP: %CurrentHP% Flasks: %STrigger% Sends %FL%), PoeUtils.txt}
+					send %FL%
+					OnCoolDown[FL]:=1 
+					CoolDown:=CoolDownFlask%FL%
+					settimer,TimmerFlask%FL%,%CoolDown%
+					sleep=rand(103,128)			
+					}
+			}
+			FL:=FL+1
+		}
+	}	
 Return
 }
 TTradeSpam(){
 BlockInput On
-Sendinput {ALT up}
-
 l:= TradeChannelStop-TradeChannelStart+1
 TradeChannel:= TradeChannelStart
-
 Loop %l%{
 	if GetKeyState("[") = 1 { ; Keep [ pressed to quit in the middle of the loop
 		TradeSpam := 0
