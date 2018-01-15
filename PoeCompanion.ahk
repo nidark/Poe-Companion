@@ -778,6 +778,7 @@ BlockInput Off
 } 
 TKeyPress(){
 SetKeyDelay 21
+RandomSleep(56,68)
 send %KeyToPressOnTimmer%
 SetKeyDelay 0
 }
