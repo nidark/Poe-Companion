@@ -58,6 +58,8 @@ global ShiftLoopCount=50
 global InventoryColumnsToMove=10
 global InventoryRowsToMove=5
 global KeyToKeepPress="Q"
+global KeyToPressOnTimmer="R"
+global KeyToPressOnTimmerDelay=5000
 global ForceLogoutOrExitOnQuit=0
 ; Dont change the speed & the tick unless you know what you are doing
 global Speed=1
@@ -138,6 +140,7 @@ global AutoPot=0
 global TradeSpam=0 
 global CurrentHP=100
 global KeyOn:=False
+global KeyOnTimmer:=False
 global Flask=1
 global OnCoolDown:=[0,0,0,0,0]
 global debug=0
@@ -161,6 +164,8 @@ If FileExist("PoeCompanion.ini"){
 	IniRead, InventoryColumnsToMove, PoeCompanion.ini, General, InventoryColumnsToMove
 	IniRead, InventoryRowsToMove, PoeCompanion.ini, General, InventoryRowsToMove	
 	IniRead, KeyToKeepPress, PoeCompanion.ini, General, KeyToKeepPress
+	IniRead, KeyToPressOnTimmer, PoeCompanion.ini, General, KeyToPressOnTimmer
+	IniRead, KeyToPressOnTimmerDelay, PoeCompanion.ini, General, KeyToPressOnTimmerDelay
 	IniRead, ForceLogoutOrExitOnQuit, PoeCompanion.ini, General, ForceLogoutOrExitOnQuit
 	IniRead, Speed, PoeCompanion.ini, General, Speed
 	IniRead, Tick, PoeCompanion.ini, General, Tick
@@ -227,6 +232,8 @@ If FileExist("PoeCompanion.ini"){
 	IniWrite, %InventoryColumnsToMove%, PoeCompanion.ini, General, InventoryColumnsToMove
 	IniWrite, %InventoryRowsToMove%, PoeCompanion.ini, General, InventoryRowsToMove	
 	IniWrite, %KeyToKeepPress%, PoeCompanion.ini, General, KeyToKeepPress
+	IniWrite, %KeyToPressOnTimmer%, PoeCompanion.ini, General, KeyToPressOnTimmer
+	IniWrite, %KeyToPressOnTimmerDelay%, PoeCompanion.ini, General, KeyToPressOnTimmerDelay
 	IniWrite, %ForceLogoutOrExitOnQuit%, PoeCompanion.ini, General, ForceLogoutOrExitOnQuit
 	IniWrite, %Speed%, PoeCompanion.ini, General, Speed
 	IniWrite, %Tick%, PoeCompanion.ini, General, Tick
@@ -288,10 +295,6 @@ If FileExist("PoeCompanion.ini"){
 
 }
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-; Gui 
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ; Gui (default bottom left)
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Gui, Color, 0X130F13
@@ -351,6 +354,7 @@ $!F::ShiftClick(ShiftLoopCount) ; ShiftClick 50 times (Use it for Fusings/Jewler
 $!M::SwitchGem() ;Alt+M to switch 2 gems (eg conc effect with area). Use CheckPos to change the positions in the function! 
 $!V::DivTrade() ;Alt+V trade all your divinations ; use CheckPos to change position if needed
 $!U::KeepKeyPressed()
+$!K::KeyOnTimmer()
 $!D::SwitchDebug()
 
 SwitchDebug(){
@@ -648,6 +652,15 @@ If (KeyOn = False)
 	KeyOn := not(KeyOn)
 	Return
 }
+KeyOnTimmer(){
+   KeyOnTimmer := !KeyOnTimmer
+   if (KeyOnTimmer=True) {
+        SetTimer TKeyPress, %KeyToPressOnTimmerDelay%
+    } else {
+        SetTimer TKeyPress, Off	
+    }
+	Return
+}
 CheckPos(){
     MouseGetPos, xpos, ypos
 	PixelGetColor, xycolor , xpos, ypos
@@ -763,6 +776,11 @@ Loop %l%{
 }
 BlockInput Off
 } 
+TKeyPress(){
+SetKeyDelay 21
+send %KeyToPressOnTimmer%
+SetKeyDelay 0
+}
 
 TimmerFlask1:
 	OnCoolDown[1]:=0
