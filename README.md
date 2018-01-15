@@ -49,6 +49,8 @@ Auto-flask, Auto-Quit, 1-key Fast-pot, Trade-Spam, Gem-Swap, Auto-Divination Tra
 
 **\`** Pressing \` once will press 1,2,3,4,5 in fast seqvence 
 
+**ALT+K**: Start/Stop Action on a timmer: Now you can setup a specific key to be pressed every X seconds. ... detonate mines, summon golem, keep firing buffs etc
+
 **ALT+Space** Open a portal using a portal scroll from the top right inv slot
 
 **ALT+I** ID all items in Inventory
