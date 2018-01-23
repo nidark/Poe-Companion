@@ -456,28 +456,28 @@ SwitchGEM() {
 	
 	Send {i} 
 	RandomSleep(56,68)
-
-	if (AlternateGemOnSecondarySlot==1) 
-		Send {X} 
-	RandomSleep(56,68)
-	
-	MouseMove %AlternateGemX%, %AlternateGemY%
+		
+	MouseMove %CurrentGemX%, %CurrentGemY%
 	RandomSleep(56,68)
 	Click, Right 
 	RandomSleep(56,68)
 	
-	MouseMove %CurrentGemX%, %CurrentGemY%
-	RandomSleep(56,68)
-	Click  
+	if (AlternateGemOnSecondarySlot==1) 
+		Send {X} 
 	RandomSleep(56,68)
 	
 	MouseMove %AlternateGemX%, %AlternateGemY%
 	RandomSleep(56,68)
-	Click
+	Click  
 	RandomSleep(56,68)
 	
 	if (AlternateGemOnSecondarySlot==1) 
 		Send {X} 
+	RandomSleep(56,68)
+	
+	MouseMove %CurrentGemX%, %CurrentGemY%
+	RandomSleep(56,68)
+	Click
 	RandomSleep(56,68)
 	
 	Send {i} 
