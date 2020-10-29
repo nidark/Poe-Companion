@@ -207,7 +207,8 @@ If FileExist("PoeCompanion.ini"){
 	IniRead, HPAvgTreshold, PoeCompanion.ini, AutoPot, HPAvgTreshold
 	IniRead, HPHighTreshold, PoeCompanion.ini, AutoPot, HPHighTreshold
  	IniRead, MainAttackKey, PoeCompanion.ini, AutoPot, MainAttackKey
-	IniRead, SecondaryAttackKey, PoeCompanion.ini, AutoPot, SecondaryAttackKey
+	IniRead, 
+	, PoeCompanion.ini, AutoPot, SecondaryAttackKey
 	IniRead, TriggerHPLow, PoeCompanion.ini, AutoPot, TriggerHPLow
 	IniRead, TriggerHPAvg, PoeCompanion.ini, AutoPot, TriggerHPAvg
 	IniRead, TriggerHPHigh, PoeCompanion.ini, AutoPot, TriggerHPHigh
@@ -702,7 +703,7 @@ TGameTick(){
 			Trigger:=Trigger+TriggerMainAttack
 		GetKeyState, state, %SecondaryAttackKey%
 		if state = D
-			Trigger=:Trigger+TriggerSecondaryAttack
+			Trigger:=Trigger+TriggerSecondaryAttack
 	}	
 		
 	PixelSearch, HPMatchX, HPMatchY, %HPX1%, %HPY1%, %HPX2%, %HPY2%, %HPColor%, 2, Fast
